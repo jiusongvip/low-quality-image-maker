@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://low-quality-image-maker.com/</loc>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/meme-deepfried-original.png</image:loc>
+      <image:caption>Original meme before deep frying</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/meme-deepfried-degraded.jpg</image:loc>
+      <image:caption>Deep fried meme after Nuked preset</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/photo-crt-original.png</image:loc>
+      <image:caption>Original portrait before CRT effect</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/photo-crt-degraded.jpg</image:loc>
+      <image:caption>Portrait after CRT Monitor preset</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/screen-pixelated-original.png</image:loc>
+      <image:caption>Original screenshot before pixelation</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/screen-pixelated-degraded.jpg</image:loc>
+      <image:caption>Screenshot after 5x pixelation</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/gradient-vintage-original.png</image:loc>
+      <image:caption>Original gradient art before vintage effect</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/img/gradient-vintage-degraded.jpg</image:loc>
+      <image:caption>Art after 2003 Phone preset</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://low-quality-image-maker.com/og-image.png</image:loc>
+      <image:caption>Low Quality Image Maker - Free Online Tool</image:caption>
+    </image:image>
+  </url>
+</urlset>

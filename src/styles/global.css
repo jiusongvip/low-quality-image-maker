@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-zinc-50 text-zinc-800 font-sans;
+  }
+
+  p + p { margin-top: 0.75rem; }
+
+  ::selection {
+    @apply bg-brand-500/25 text-brand-900;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-zinc-300 rounded-full; }
+}
+
+@layer components {
+  /* Drop zone glow */
+  .drop-glow {
+    box-shadow: 0 0 0 2px theme("colors.brand.500"),
+                0 0 40px theme("colors.brand.500 / 15%");
+  }
+
+  /* Section divider */
+  .section-divide {
+    @apply border-t border-zinc-200;
+  }
+
+  /* --- Card variants --- */
+  .card-raised {
+    @apply bg-white rounded-2xl border border-zinc-200/60 shadow-sm;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card-raised:hover {
+    @apply border-brand-500/30 shadow-md;
+  }
+
+  .card-accent {
+    @apply bg-white rounded-2xl border border-zinc-200/60 shadow-sm
+           relative overflow-hidden;
+  }
+  .card-accent::before {
+    content: "";
+    @apply absolute left-0 top-0 bottom-0 w-1 bg-brand-500 rounded-l-2xl;
+  }
+
+  .card-flat {
+    @apply bg-zinc-50/80 rounded-xl border border-zinc-100;
+  }
+
+  /* Icon box — gradient brand circle */
+  .icon-box {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center shrink-0;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+  }
+  .icon-box svg {
+    @apply text-white;
+  }
+
+  .icon-box-soft {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center shrink-0;
+    @apply bg-brand-50;
+  }
+  .icon-box-soft svg {
+    @apply text-brand-500;
+  }
+
+  /* Section header */
+  .sec-label {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+           bg-brand-50 border border-brand-200 text-[11px] font-semibold
+           text-brand-700 uppercase tracking-wider;
+  }
+
+  /* FAQ animation */
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  .faq-answer.open { grid-template-rows: 1fr; }
+  .faq-answer > div { overflow: hidden; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}

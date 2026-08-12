@@ -1,0 +1,85 @@
+---
+// BaseLayout — single-page tool layout
+// Palette: dark zinc base + bold orange accent
+const {
+  title = 'Low Quality Image Maker - Free Online Tool',
+  description = 'Make images low quality instantly in your browser. Deep fry memes, compress for Discord or government forms, add retro CRT effects. Free, private, no upload.',
+} = Astro.props;
+
+// Strip trailing slash for trailingSlash: 'never' — new URL('/') returns '/' which becomes 'example.com/'
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, '');
+---
+<!DOCTYPE html>
+<html lang="en" class="bg-surface">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={pageUrl} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={pageUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Low Quality Image Maker" />
+  <meta property="og:image" content="https://low-quality-image-maker.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://low-quality-image-maker.com/og-image.png" />
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#18181b" />
+
+  <!-- gifuct-js for GIF frame parsing -->
+  <script is:inline src="https://unpkg.com/gifuct-js@2.1.2/dist/gifuct-js.umd.js" defer></script>
+
+  <!-- Schema: WebApplication + Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: 'Low Quality Image Maker',
+        url: 'https://low-quality-image-maker.com',
+        description: 'Free online tool to make images low quality. Deep fry memes, compress for Discord, add retro pixelation effects. 100% private browser-based processing.',
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: ['Windows', 'macOS', 'Linux', 'iOS', 'Android'],
+        datePublished: '2026-08-01',
+        dateModified: '2026-08-12',
+        offers: { '@type': 'Offer', price: '0' },
+        featureList: [
+          'Real-time quality slider with live file-size preview',
+          'Deep fried meme presets (Light Fry / Classic / Nuked)',
+          'Target file size compression mode',
+          'CRT monitor and vintage retro effects',
+          'GIF animation support',
+          '100% client-side processing — no server uploads',
+        ],
+      },
+      {
+        '@type': 'Organization',
+        name: 'Low Quality Image Maker',
+        url: 'https://low-quality-image-maker.com',
+      },
+      {
+        '@type': 'Person',
+        name: 'Jiusong',
+        url: 'https://low-quality-image-maker.com',
+        jobTitle: 'Frontend Developer',
+        description: 'Frontend developer specializing in Canvas API image processing and browser-based tools.',
+        sameAs: ['https://github.com/jiusong'],
+      },
+    ],
+  })} />
+</head>
+<body class="min-h-dvh bg-surface text-zinc-800 font-sans antialiased">
+  <slot />
+</body>
+</html>
+

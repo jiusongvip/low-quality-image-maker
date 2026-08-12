@@ -1,0 +1,283 @@
+ {
+   "summary": {
+     "health_score": 58,
+     "business_type": "SaaS / Online Tool (free image processing utility)",
+     "top_findings": [
+       "Single-page site: 1 URL in sitemap vs. 8+ planned — missing blog and sub-tool pages limits topical authority",
+       "3 oversized demo PNGs total 1.1 MB; JPEG equivalents exist at ~95% smaller",
+       "Gallery comparison images are JS-generated (Canvas API), invisible to crawlers and AI",
+       "Missing trust pages: no privacy policy, terms, about page, or author attribution",
+       "theme-color meta tag contains an image URL instead of a hex color code"
+     ],
+     "quick_wins": [
+       "Fix theme-color to #18181b (5 seconds)",
+       "Swap 3 oversized PNGs for existing JPEGs (1.1 MB savings)",
+       "Add width/height attributes to all <img> tags (eliminates CLS)",
+       "Add FAQPage structured data matching existing 10 FAQ items",
+       "Create and submit image sitemap for 12 static images"
+     ]
+   },
+   "categories": [
+     {
+       "name": "Technical SEO",
+       "score": 65,
+       "what_works": [
+         "robots.txt present with sitemap reference",
+         "Canonical URL correctly set",
+         "Meta robots index,follow declared",
+         "UTF-8 charset, viewport, lang=en all present",
+         "SSL via Cloudflare Pages (verify post-deploy)"
+       ],
+       "findings": [
+         {
+           "title": "Sitemap contains only 1 URL",
+           "severity": "High",
+           "description": "The sitemap lists only the root URL. The build strategy planned 6+ sub-pages. Current state provides zero content-breadth signal to search engines.",
+           "recommendation": "Build planned sub-pages (blog, deep-fried-meme-maker, compress-image, pixelate-image) and add them to sitemap."
+         },
+         {
+           "title": "No custom 404 page",
+           "severity": "Medium",
+           "description": "No 404.html in dist output. Astro's default 404 is minimal.",
+           "recommendation": "Create /404.html with navigation back to the tool."
+         },
+         {
+           "title": "Missing security headers",
+           "severity": "Medium",
+           "description": "No X-Content-Type-Options, X-Frame-Options, or Referrer-Policy headers.",
+           "recommendation": "Add public/_headers file with security directives for Cloudflare Pages."
+         }
+       ]
+     },
+     {
+       "name": "Content Quality (E-E-A-T)",
+       "score": 58,
+       "what_works": [
+         "~8,100 words of technically accurate, genuinely helpful content",
+         "Covers 5+ distinct use cases in depth",
+         "10-item FAQ with substantial answers",
+         "How it works section demonstrates real technical expertise",
+         "Reference table for best settings is uniquely useful"
+       ],
+       "findings": [
+         {
+           "title": "No author or organizational attribution",
+           "severity": "High",
+           "description": "Zero signals about who built the tool. For a site handling ID photos and government form images, this is a trust gap.",
+           "recommendation": "Add an About page with organizational attribution and contact info."
+         },
+         {
+           "title": "Missing privacy policy and terms pages",
+           "severity": "High",
+           "description": "Tool claims 100% private processing in copy but has no dedicated privacy policy page to back it up.",
+           "recommendation": "Create /privacy/ and /terms/ pages. Even for client-side-only tools, a privacy policy is a trust signal."
+         },
+         {
+           "title": "No external citations or authoritative outbound links",
+           "severity": "Medium",
+           "description": "Guide sections reference Reddit communities, JPEG standards, and historical context but never link out.",
+           "recommendation": "Add outbound links to authoritative sources (Reddit, Wikipedia, technical references)."
+         }
+       ]
+     },
+     {
+       "name": "On-Page SEO",
+       "score": 68,
+       "what_works": [
+         "Title tag: 69 characters — excellent length, keyword-rich",
+         "H1: exact match for 'Low Quality Image Maker'",
+         "14 H2 headings with clean hierarchy",
+         "8 Open Graph tags and 4 Twitter Card tags fully configured",
+         "og:image verified at 1200×630"
+       ],
+       "findings": [
+         {
+           "title": "theme-color meta tag is an image URL, not a color",
+           "severity": "Critical",
+           "description": "Content attribute is https://low-quality-image-maker.com/og-image.png instead of a hex color.",
+           "recommendation": "Change to #18181b or the brand accent color."
+         },
+         {
+           "title": "Meta description exceeds 160-character SERP limit",
+           "severity": "Medium",
+           "description": "At 168 characters, the last 8-13 characters will be truncated in search results.",
+           "recommendation": "Trim to 155-160 characters by removing a lower-priority feature mention."
+         },
+         {
+           "title": "All internal links are in-page anchors",
+           "severity": "Low",
+           "description": "11 internal links all point to # sections. No cross-page linking because sub-pages don't exist yet.",
+           "recommendation": "Add cross-page internal linking when sub-pages are built."
+         }
+       ]
+     },
+     {
+       "name": "Schema / Structured Data",
+       "score": 65,
+       "what_works": [
+         "WebApplication schema with feature list, $0 price, OS support",
+         "Organization schema with name and URL",
+         "HowTo schema with 3 properly structured steps",
+         "FAQPage schema detected in HTML"
+       ],
+       "findings": [
+         {
+           "title": "FAQPage schema available but should be validated",
+           "severity": "High",
+           "description": "With 10 well-structured FAQ items using <details> elements, the FAQPage schema could generate rich results.",
+           "recommendation": "Validate with Google Rich Results Test and ensure mainEntity array is complete."
+         },
+         {
+           "title": "Missing BreadcrumbList and SiteNavigationElement",
+           "severity": "Low",
+           "description": "Low priority for single-page site; add when sub-pages are created.",
+           "recommendation": "Add BreadcrumbList schema on sub-pages."
+         }
+       ]
+     },
+     {
+       "name": "Performance (CWV)",
+       "score": 55,
+       "what_works": [
+         "CSS inlined in <head> — no render-blocking external stylesheets",
+         "JS modules deferred (type=module) — non-blocking",
+         "Demo images use loading=lazy",
+         "System font stack — no font downloads",
+         "Zero third-party scripts, analytics, or trackers"
+       ],
+       "findings": [
+         {
+           "title": "Total page weight ~1.35 MB — images are 87%",
+           "severity": "High",
+           "description": "HTML (114 KB) + CSS (26 KB) + JS (38 KB) + Images (1,203 KB) = ~1,381 KB. Images dominate the payload.",
+           "recommendation": "Swap oversized PNGs for JPEGs. Add WebP variants. Add image dimensions to prevent CLS."
+         },
+         {
+           "title": "3 oversized PNG demo files: 1.1 MB wasted",
+           "severity": "High",
+           "description": "meme-deepfried-degraded.png (409 KB), gradient-vintage-degraded.png (403 KB), photo-crt-degraded.png (292 KB). JPEG equivalents exist at 21, 16, 14 KB.",
+           "recommendation": "Replace with JPEG versions. PNG is wrong format for artifact-heavy, degraded images."
+         },
+         {
+           "title": "No image dimensions — guaranteed CLS",
+           "severity": "Medium",
+           "description": "All 10 img tags lack width/height attributes, causing layout shift as images load.",
+           "recommendation": "Add width and height attributes matching actual image dimensions."
+         }
+       ]
+     },
+     {
+       "name": "Images",
+       "score": 40,
+       "what_works": [
+         "All 10 img tags have descriptive alt text",
+         "OG image matches declared dimensions (1200x630)",
+         "Favicon is SVG (301 bytes — ideal)",
+         "Demo images are consistent 400x400"
+       ],
+       "findings": [
+         {
+           "title": "Gallery comparison images are JS-generated, invisible to crawlers",
+           "severity": "Critical",
+           "description": "The 'See the degradation in action' section renders via Canvas API. Crawlers see only 'Loading comparison gallery...' placeholder.",
+           "recommendation": "Pre-render comparison images as static img tags in the HTML template."
+         },
+         {
+           "title": "PNG used where JPEG belongs",
+           "severity": "High",
+           "description": "Three degraded demo images are PNG despite being artifact-heavy visuals. JPEG equivalents exist at ~95% smaller.",
+           "recommendation": "Swap to JPEG for all degraded output demos. Reserve PNG for pixel art and transparency needs."
+         },
+         {
+           "title": "No responsive images or WebP variants",
+           "severity": "Medium",
+           "description": "All demo images are 400x400 with no srcset. No WebP copies exist.",
+           "recommendation": "Add srcset with 200w and 400w variants. Create WebP copies for all demo images."
+         }
+       ]
+     },
+     {
+       "name": "AI Search Readiness",
+       "score": 25,
+       "what_works": [
+         "Content is well-structured with 14 H2 headings",
+         "FAQ uses semantic <details> elements",
+         "Meta description is accurate",
+         "All content is in initial HTML (no client-side rendering)"
+       ],
+       "findings": [
+         {
+           "title": "No llms.txt file",
+           "severity": "High",
+           "description": "An llms.txt file would help LLM crawlers (ChatGPT, Perplexity, Claude) understand and cite the tool.",
+           "recommendation": "Create /llms.txt with tool description and links to key pages."
+         },
+         {
+           "title": "Zero brand citation signals",
+           "severity": "High",
+           "description": "New domain with no backlinks or mentions. LLMs have no basis for citing this tool.",
+           "recommendation": "List on Product Hunt, AlternativeTo, and other tool directories to build initial backlinks."
+         },
+         {
+           "title": "Gallery content invisible to AI crawlers",
+           "severity": "Medium",
+           "description": "Same as image search — Canvas-rendered comparison pairs are not crawlable by AI systems.",
+           "recommendation": "Pre-render comparison images as static content."
+         }
+       ]
+     }
+   ],
+   "action_plan": {
+     "phases": [
+       {
+         "name": "Phase 1: Critical Fixes",
+         "timeframe": "Week 1",
+         "items": [
+           "Fix theme-color meta tag (change image URL to #18181b)",
+           "Replace 3 oversized PNGs with existing JPEGs (1.1 MB savings)",
+           "Pre-render gallery comparison images as static HTML img tags",
+           "Add width/height attributes to all img tags",
+           "Create privacy policy page (/privacy/)"
+         ]
+       },
+       {
+         "name": "Phase 2: High-Impact Improvements",
+         "timeframe": "Weeks 2-3",
+         "items": [
+           "Build 3 sub-tool pages (deep-fried-meme-maker, compress-image, pixelate-image)",
+           "Launch blog with 3 seed posts",
+           "Add WebP versions of all demo images with srcset",
+           "Create About page with organizational attribution",
+           "Validate and enhance FAQPage structured data"
+         ]
+       },
+       {
+         "name": "Phase 3: Content & Authority",
+         "timeframe": "Month 2",
+         "items": [
+           "Create image sitemap for 12 static images",
+           "Add 2 more blog posts (aesthetic history, competitor comparison)",
+           "Create llms.txt at root",
+           "Submit to tool directories (Product Hunt, AlternativeTo)",
+           "Add outbound authority links throughout guides",
+           "Add security headers via _headers file"
+         ]
+       },
+       {
+         "name": "Phase 4: Monitoring & Iteration",
+         "timeframe": "Ongoing",
+         "items": [
+           "Deploy to Cloudflare Pages, submit sitemap to GSC",
+           "Set up GA4 + GSC monitoring",
+           "Monitor Core Web Vitals via CrUX",
+           "Expand sub-pages for long-tail keywords",
+           "Build custom 404 page"
+         ]
+       }
+     ]
+   },
+   "artifacts": {
+     "findings_dir": "findings/",
+     "screenshots_dir": "screenshots/"
+   }
+ }

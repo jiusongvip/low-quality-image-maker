@@ -1,0 +1,1958 @@
+
+---
+// 首页 — Low Quality Image Maker 单页工具站
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ToolCanvas from '../components/ToolCanvas.astro';
+import '../styles/global.css';
+const title = 'Low Quality Image Maker — Free Deep Fry & Degrade Tool';
+const description = 'Make images low quality instantly in your browser. Deep fry memes, compress for Discord or government forms, add retro CRT effects. Free, private, no upload.';
+---
+<BaseLayout {title} {description}>
+  
+<!-- ═══════════ NAV ═══════════ -->
+  
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200">
+    
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+<a href="/" class="text-sm font-semibold tracking-tight text-zinc-800 hover:text-zinc-900 transition-colors">
+        Low Quality Image Maker      </a>
+      
+<span class="text-xs text-zinc-400 font-mono uppercase tracking-wider">Free &middot; Private</span>
+    
+</div>
+  
+</nav>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6">
+    
+<!-- ═══════════ HERO ═══════════ -->
+    
+<section class="pt-16 pb-10 md:pt-20 md:pb-12 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-zinc-900 leading-[1.05] text-balance">
+        Low Quality 
+<span class="text-brand-500">Image Maker</span>
+      </h1>
+      
+<p class="mt-4 max-w-2xl mx-auto text-base text-zinc-400 leading-relaxed text-balance">
+        
+<strong class="text-zinc-800">Intentionally degrade, compress, pixelate, and deep fry any image
+</strong> — right in your browser.        Create crusty deep fried memes for Reddit and Discord, compress high-res photos under strict file size limits for government forms and email attachments,        pixelate sensitive information for privacy, or add CRT scan lines and vintage noise for that early-internet aesthetic.        Supports JPEG, PNG, WebP, GIF, and BMP files up to 100MB. 
+<strong class="text-zinc-800">100% client-side processing
+</strong> — your images never leave your device.        No uploads, no servers, no watermarks, no signup. Completely free, unlimited, and private.      </p>
+      
+<div class="mt-5 flex flex-wrap justify-center gap-2">
+        
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
+<span class="text-brand-500 font-bold">&infin;</span> Free Forever</span>
+        
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
+<span class="text-brand-500">&#10003;</span> No Watermark</span>
+        
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
+<span class="text-brand-500">&#8593;</span> Up to 100MB</span>
+        
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
+<span class="text-brand-500">&#128274;</span> 100% Private</span>
+      
+</div>
+    
+</section>
+        
+<!-- ============ QUICK ACTIONS ============ -->
+    
+<section class="max-w-6xl mx-auto px-4 sm:px-6 pb-6 md:pb-8">
+      
+<p class="text-center text-xs text-zinc-400 uppercase tracking-wider mb-3">I want to...</p>
+      
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        
+<a href="#tool-root" data-quick="nuked" class="quick-card group flex flex-col items-center gap-1.5 p-4 rounded-xl bg-white border border-zinc-200 hover:border-brand-500/40 hover:bg-zinc-100/50 transition-all cursor-pointer no-underline">
+          
+<span class="text-2xl group-hover:scale-110 transition-transform">🧨</span>
+          
+<span class="text-xs font-medium text-zinc-700 group-hover:text-zinc-900">Deep Fried Meme</span>
+          
+<span class="text-[10px] text-zinc-400">Extreme crust, one click</span>
+        </a>
+        
+<a href="#tool-root" data-quick="compress" class="quick-card group flex flex-col items-center gap-1.5 p-4 rounded-xl bg-white border border-zinc-200 hover:border-brand-500/40 hover:bg-zinc-100/50 transition-all cursor-pointer no-underline">
+          
+<span class="text-2xl group-hover:scale-110 transition-transform">📦</span>
+          
+<span class="text-xs font-medium text-zinc-700 group-hover:text-zinc-900">Compress for Discord</span>
+          
+<span class="text-[10px] text-zinc-400">Hit exact KB targets</span>
+        </a>
+        
+<a href="#tool-root" data-quick="pixelate" class="quick-card group flex flex-col items-center gap-1.5 p-4 rounded-xl bg-white border border-zinc-200 hover:border-brand-500/40 hover:bg-zinc-100/50 transition-all cursor-pointer no-underline">
+          
+<span class="text-2xl group-hover:scale-110 transition-transform">🔒</span>
+          
+<span class="text-xs font-medium text-zinc-700 group-hover:text-zinc-900">Pixelate Sensitive Info</span>
+          
+<span class="text-[10px] text-zinc-400">Censor faces & text</span>
+        </a>
+        
+<a href="#tool-root" data-quick="crt" class="quick-card group flex flex-col items-center gap-1.5 p-4 rounded-xl bg-white border border-zinc-200 hover:border-brand-500/40 hover:bg-zinc-100/50 transition-all cursor-pointer no-underline">
+          
+<span class="text-2xl group-hover:scale-110 transition-transform">📺</span>
+          
+<span class="text-xs font-medium text-zinc-700 group-hover:text-zinc-900">Retro CRT Effect</span>
+          
+<span class="text-[10px] text-zinc-400">90s monitor nostalgia</span>
+        </a>
+      
+</div>
+    
+</section>
+    
+<script>
+      document.querySelectorAll(".quick-card").forEach(function(card) {        card.addEventListener("click", function(e) {          window.__pendingQuickAction = card.dataset.quick;        });      });    
+</script>
+<!-- ═══════════ TOOL ═══════════ -->
+    
+<section class="pb-16 md:pb-20">
+      <ToolCanvas />
+    
+</section>
+        
+<!-- ============ PRIVACY TRUST BAR ============ -->
+    
+<div class="max-w-6xl mx-auto px-4 sm:px-6 pb-14 md:pb-16">
+      
+<div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 py-3 px-4 rounded-xl bg-brand-500/5 border border-brand-500/10 text-center">
+        
+<span class="flex items-center gap-1.5 text-xs text-zinc-400">
+<svg class="w-3.5 h-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+</svg> 100% private -- images never leave your browser</span>
+        
+<span class="hidden sm:block text-zinc-700">&middot;</span>
+        
+<span class="text-xs text-zinc-500">No servers &middot; no uploads &middot; works offline</span>
+      
+</div>
+    
+</div>
+<!-- ═══════════ FEATURES ═══════════ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="text-center mb-10">
+        
+<span class="sec-label mb-4">Features</span>
+        
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mt-3">Why choose this tool</h2>
+      
+</div>
+      
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+<div class="card-accent p-6">
+          
+<div class="icon-box-soft mb-4">
+            
+<svg class="w-4.5 h-4.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            
+</svg>
+          
+</div>
+          
+<h3 class="text-sm font-semibold text-zinc-800 mb-1.5">Instant Processing</h3>
+          
+<p class="text-xs text-zinc-500 leading-relaxed">
+<strong class="text-zinc-400">Rendered in milliseconds
+</strong> using your device's GPU-accelerated Canvas API. There are zero server queues, zero upload wait times, and zero network latency. The instant you drag a file into the upload zone, processing begins. Every slider movement and preset click triggers an immediate re-render through an animation-frame-throttled pipeline so the preview updates at a smooth 60 frames per second. You see exactly what you will get before hitting download, including live file size estimates accurate to within 5% of the final output. Even a 100MB high-resolution photo renders in under 200 milliseconds on modern hardware. Unlike cloud tools that make you wait in a queue behind other users, our client-side architecture means processing is never throttled by server load— it is always as fast as your own device. No other free online image quality reducer combines instant preview feedback with large-file support at this level of performance.</p>
+        
+</div>
+        
+<div class="card-accent p-6">
+          
+<div class="icon-box-soft mb-4">
+            
+<svg class="w-4.5 h-4.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            
+</svg>
+          
+</div>
+          
+<h3 class="text-sm font-semibold text-zinc-800 mb-1.5">100% Private</h3>
+          
+<p class="text-xs text-zinc-500 leading-relaxed">
+<strong class="text-zinc-400">Zero bytes of your data ever leave your device.
+</strong> While cloud-based tools silently upload your photos to remote servers for processing, our entire degradation engine runs inside your browser using the HTML5 Canvas API, FileReader, and toBlob— all standard browser APIs that execute locally. You can verify this yourself: open your browser's Network tab while using the tool and you will see exactly zero outbound requests during image processing. Disconnect from the internet entirely and every feature still works— uploading, previewing, preset effects, advanced controls, downloading, even batch processing. This architecture makes our tool the safest choice for sensitive content: passport photos, ID card scans, medical document screenshots, private family photos, and confidential work materials. No servers means no data breaches, no subpoenable records, and no privacy policy that changes tomorrow. The tool's static HTML site works offline as a Progressive Web App, so you can even save it to your home screen for completely disconnected use.</p>
+        
+</div>
+        
+<div class="card-accent p-6">
+          
+<div class="icon-box-soft mb-4">
+            
+<svg class="w-4.5 h-4.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            
+</svg>
+          
+</div>
+          
+<h3 class="text-sm font-semibold text-zinc-800 mb-1.5">Creative Effects</h3>
+          
+<p class="text-xs text-zinc-500 leading-relaxed">
+<strong class="text-zinc-400">Eight independent dimensions of degradation
+</strong> that no other free tool combines on a single page. The quality slider (1–100%) controls JPEG compression aggressiveness at the output encoding stage. The pixelation control (1×–20×) downsamples and re-upscales your image with nearest-neighbor interpolation for blocky retro grids. The noise generator (0–100%) adds per-pixel random perturbation to every RGB channel independently. The blur control (0–20) progressively downsamples the image before re-upsampling, simulating optical softness and VHS tape degradation. The brightness adjustment (−50 to +50) shifts luminance before JPEG encoding. Five one-click presets apply carefully tuned combinations: Light Fry (30% quality), Classic Deep Fried (20% quality + 2× pixelation + 15% noise + slight brightness boost), Nuked (10% quality + 8× pixelation + 35% noise + extreme brightness + yellow overlay), 2003 Phone (20% quality + 6× pixelation + 20% noise + cool blue tint), and CRT Monitor (40% quality + scan lines every 3px + dimming overlay + subtle noise). The Advanced Controls panel then lets you deviate from any preset and dial in your exact aesthetic— from subtle film grain to unrecognizable visual destruction.</p>
+        
+</div>
+        
+<div class="card-accent p-6">
+          
+<div class="icon-box-soft mb-4">
+            
+<svg class="w-4.5 h-4.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33" />
+            
+</svg>
+          
+</div>
+          
+<h3 class="text-sm font-semibold text-zinc-800 mb-1.5">Free & Unlimited</h3>
+          
+<p class="text-xs text-zinc-500 leading-relaxed">
+<strong class="text-zinc-400">No catches, no upselling, no premium tier
+</strong>— not now, not ever. Process unlimited images every day with zero watermarks, zero daily caps, and zero forced registration. There is no email collection form, no sign-up modal, and no payment system anywhere in the codebase— we do not even have a Stripe account. This is sustainable because the entire tool runs client-side: we serve static HTML, CSS, and JavaScript files from a CDN (under 50KB gzipped total), and your browser does all the heavy lifting. No image is ever stored on a server, and we have zero infrastructure costs per user. This architecture lets us offer the tool completely free indefinitely without ever needing to monetize. The tool exists because intentionally ruining image quality— whether for deep fried memes, Discord compression hacks, government form photo requirements, privacy redaction, or retro CRT aesthetics— should be accessible to everyone, forever, with no strings attached.</p>
+        
+</div>
+      
+</div>
+    
+</section>
+    
+<!-- ═══════════ USE CASES ═══════════ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="text-center mb-10">
+        
+<span class="sec-label mb-4">Use Cases</span>
+        
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mt-3">Built for real scenarios</h2>
+      
+</div>
+      
+<p class="text-sm text-zinc-500 text-center max-w-lg mx-auto mb-10 leading-relaxed">
+        Whether you're making memes or shrinking files, we've got you covered.      </p>
+      
+<!-- Layout: 2x2 mixed grid — images + text in alternating rhythm -->
+      
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+<!-- Memes -->
+        
+<div class="md:col-span-2 card-raised p-6 flex flex-col md:flex-row gap-6 items-center">
+          
+<div class="flex-1">
+            
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-brand-500/10 border border-brand-500/20 mb-3">
+              
+<span class="text-[10px] font-mono uppercase tracking-wider text-brand-400">Most Popular</span>
+            
+</div>
+            
+<h3 class="text-lg font-semibold text-zinc-900 mb-2">Deep Fried Memes</h3>
+            
+<p class="text-sm text-zinc-400 leading-relaxed max-w-md">
+              
+<p class="text-sm text-zinc-400 leading-relaxed max-w-md">Create crispy, artifact-ridden memes for Reddit's r/DeepFriedMemes (500,000+ members), Discord meme channels, Twitter, and Instagram. The deep fried aesthetic originated on Tumblr around 2014—users discovered that repeatedly screenshotting, re-uploading, and compressing an image created a uniquely grotesque visual language. Our tool replicates that entire degradation pipeline in a single click. 
+<strong class="text-zinc-700">The Nuked preset
+</strong> delivers the authentic “screenshotted 40 times” look with 8× pixelation, 35% noise, extreme brightness (+20), and aggressive JPEG compression at 10% quality—this is the setting used by r/DeepFriedMemes power users. 
+<strong class="text-zinc-700">The Classic Deep Fried preset
+</strong> gives you the standard Reddit aesthetic with 2× pixelation, 15% noise, and moderate compression at 20% quality. For subtle meme seasoning where the original image is still recognizable, start with 
+<strong class="text-zinc-700">Light Fry at 30% quality
+</strong>. 
+<strong class="text-zinc-700">Pro tip:
+</strong> combine the Nuked preset with the CRT Monitor preset afterward for a truly cursed result, or layer the 2003 Phone preset on top of Classic for a nostalgic deep fried look. The output format defaults to JPEG because JPEG's lossy compression algorithm creates the characteristic 8×8 blocking artifacts that define the deep fried aesthetic—PNG's lossless compression would defeat the purpose.</p>
+            </p>
+            
+<p class="text-xs text-zinc-400 mt-2 font-mono">Target: 30&ndash;100KB &middot; JPEG recommended</p>
+          
+</div>
+          
+<div class="w-full md:w-48 aspect-square rounded-xl bg-gradient-to-br from-brand-900/40 to-surface overflow-hidden flex items-center justify-center shrink-0">
+            
+<span class="text-5xl select-none opacity-60 grayscale contrast-200 blur-[1px]">🧨</span>
+          
+</div>
+        
+</div>
+        
+<!-- Discord -->
+        
+<div class="card-raised p-6">
+          
+<h3 class="text-base font-semibold text-zinc-900 mb-2">Discord & Forum Limits</h3>
+          
+<p class="text-sm text-zinc-400 leading-relaxed">
+            
+<p class="text-sm text-zinc-400 leading-relaxed">Bypass Discord's 8MB free-tier upload cap, forum attachment restrictions, and messaging app file size limits without shrinking your image dimensions. 
+<strong class="text-zinc-700">How it works:
+</strong> open Advanced Controls, type your target KB in the Target File Size field, and hit Auto-Match. The tool runs a 9-iteration binary search across all 100 quality levels to find the optimal JPEG compression setting that keeps you under the limit while preserving the best possible visual quality. This is fundamentally different from resizing—your image keeps its full pixel dimensions and looks the same size on screen, but the file size drops dramatically. 
+<strong class="text-zinc-700">Common platform limits at a glance:
+</strong> Discord free tier: 8MB (Nitro Basic: 50MB, Nitro: 500MB). Slack: 10MB per file. Telegram: 2GB (but compresses photos automatically). WhatsApp: 16MB for media. Most online forums: 500KB–2MB per attachment. Reddit: 20MB for direct image uploads. Twitter/X: 5MB for photos. 
+<strong class="text-zinc-700">Real example:
+</strong> a 12MB DSLR photo of your gaming setup gets rejected by Discord's free tier. Upload it here, enter 7000 (7MB to leave headroom) in Target File Size, click Auto-Match, and the tool finds quality ~55%—keeping your photo at full 4000×3000 resolution while fitting comfortably under Discord's limit. No watermark, no registration, and the processed image never left your browser.</p>
+          </p>
+          
+<p class="text-xs text-zinc-400 mt-3 font-mono">Target: under 100KB</p>
+        
+</div>
+        
+<!-- Government Forms -->
+        
+<div class="card-raised p-6">
+          
+<h3 class="text-base font-semibold text-zinc-900 mb-2">Government & Exam Portals</h3>
+          
+<p class="text-sm text-zinc-400 leading-relaxed">
+            
+<p class="text-sm text-zinc-400 leading-relaxed">Passport applications, visa photos, UPSC, SSC, IBPS, banking exams, driving license renewals, and other government portal uploads often impose 
+<strong class="text-zinc-700">strict dual requirements: specific pixel dimensions AND a maximum file size of 20–50KB
+</strong>. These two constraints are naturally in tension—keeping a photo at 300×400 pixels while squeezing it under 50KB requires aggressive JPEG compression without any resizing. 
+<strong class="text-zinc-700">The Target File Size Auto-Match mode was built exactly for this scenario.
+</strong> Here is the workflow: keep your photo at the exact pixel dimensions required by the form (do not resize), upload it, type your KB limit in the Target File Size field (e.g., 50 for a 50KB cap), and click Auto-Match. The tool performs a binary search across 9 quality levels—testing 50%, 25%, 12%, 6%, 3%, and so on—to find the highest quality setting that produces a file under your target. This is vastly superior to the trial-and-error approach of manually adjusting a slider, saving a file, checking its size, and repeating. 
+<strong class="text-zinc-700">Common exam photo requirements:
+</strong> UPSC Civil Services: 20–50KB, 3.5cm×4.5cm at 350×450px. SSC CGL: 20–50KB. IBPS: 20–50KB. NEET: 10–200KB. US passport: under 240KB at 600×600px. Indian passport: 10–20KB at 200×300px. UK passport: under 6MB. All processing runs locally in your browser, so sensitive ID documents and passport photos never touch a remote server—critical for identity documents governed by data protection laws. Output in JPEG format for maximum compression; if your form requires PNG, switch the format selector in Advanced Controls, though note that PNG files will be larger at the same visual quality.</p>
+          </p>
+          
+<p class="text-xs text-zinc-400 mt-3 font-mono">Target: under 50KB</p>
+        
+</div>
+        
+<!-- Retro -->
+        
+<div class="md:col-span-2 card-raised p-6 flex flex-col md:flex-row gap-6 items-center">
+          
+<div class="w-full md:w-48 aspect-video md:aspect-square rounded-xl bg-gradient-to-br from-blue-900/30 to-purple-900/20 overflow-hidden flex items-center justify-center shrink-0">
+            
+<span class="text-4xl select-none opacity-50 hue-rotate-180 saturate-150 blur-[0.5px]">📺</span>
+          
+</div>
+          
+<div class="flex-1">
+            
+<h3 class="text-lg font-semibold text-zinc-900 mb-2">Retro & Vintage Aesthetics</h3>
+            
+<p class="text-sm text-zinc-400 leading-relaxed max-w-md">
+              
+<p class="text-sm text-zinc-400 leading-relaxed max-w-md">
+<strong class="text-zinc-700">The CRT Monitor preset
+</strong> layers horizontal scan lines every 3 pixels (simulating a 240-line CRT phosphor mask) with subtle RGB noise (8%) and a dimming overlay (−10 brightness) for an authentic late-1990s CRT computer monitor look. This effect is widely used in vaporwave and synthwave album art, retro gaming content, cyberpunk visual design, and nostalgia-driven brand identities. 
+<strong class="text-zinc-700">The 2003 Phone preset
+</strong> recreates early cameraphone photography with 6× pixelation, 20% noise, a cool blue tint applied via brightness shift, and chunky compression at 20% quality (<a href="https://en.wikipedia.org/wiki/JPEG" rel="nofollow noopener" target="_blank" class="text-brand-500 hover:text-brand-400 underline underline-offset-2">JPEG</a>)—think Motorola RAZR V3 (0.3MP sensor), Nokia 6600 (VGA resolution), or Sony Ericsson T610. The resulting images have the characteristic low dynamic range, crushed shadows, and color cast of early-2000s mobile phone cameras, which shot at resolutions around 640×480 with tiny sensors that produced significant noise in anything but direct sunlight. 
+<strong class="text-zinc-700">Beyond presets: creating custom retro looks.
+</strong> Open Advanced Controls and combine the four independent sliders to build your own vintage aesthetic. For a VHS tape effect: set pixelation to 3×, noise to 25%, blur to 3, and brightness to +5. For degraded film stock: pixelation 1×, noise 40%, blur 8, brightness −10. For early YouTube compression (2006 era): quality 15%, pixelation 1×, noise 5%, blur 1. The presets are starting points; the real creative control comes from exploring the parameter space yourself. These effects are used by musicians for lo-fi album covers, by designers for retro-themed social media campaigns, by filmmakers for period-accurate video inserts, and by artists exploring the aesthetic of digital decay as a creative medium. Download in JPEG for maximum period accuracy (matching the formats those original devices produced) or PNG if you need lossless preservation of your custom effect.</p>
+            </p>
+            
+<p class="text-xs text-zinc-400 mt-2 font-mono">Presets: CRT Monitor &middot; 2003 Phone</p>
+          
+</div>
+        
+</div>
+      
+</div>
+    
+</section>
+        
+    <!-- ============ VISUAL DEMO GALLERY ============ -->
+    <section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      <div class="text-center mb-10">
+        <span class="sec-label mb-4">See It in Action</span>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mt-3">Before &amp; after <span class="text-brand-500">examples</span></h2>
+      </div>
+      <p class="text-sm text-zinc-500 text-center max-w-xl mx-auto mb-10">
+        Not sure what each effect looks like? Here are real examples generated with the same engine you will use.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="card-raised overflow-hidden">
+          <div class="grid grid-cols-2">
+            <div><p class="text-xs text-zinc-400 text-center py-2 bg-zinc-50">Original</p><img src="/img/meme-deepfried-original.png" alt="Original meme before deep frying" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+            <div><p class="text-xs text-brand-400 text-center py-2 bg-brand-50">Nuked Preset</p><img src="/img/meme-deepfried-degraded.jpg" alt="Deep fried meme after Nuked preset" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+          </div>
+          <div class="px-4 py-3 border-t border-zinc-100 flex items-center justify-between">
+            <span class="text-xs font-medium text-zinc-800">Deep Fried Meme</span>
+            <span class="text-xs text-zinc-400 font-mono">51 KB → 22 KB · Nuked preset</span>
+          </div>
+        </div>
+        <div class="card-raised overflow-hidden">
+          <div class="grid grid-cols-2">
+            <div><p class="text-xs text-zinc-400 text-center py-2 bg-zinc-50">Original</p><img src="/img/photo-crt-original.png" alt="Original portrait before CRT effect" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+            <div><p class="text-xs text-brand-400 text-center py-2 bg-brand-50">CRT Monitor</p><img src="/img/photo-crt-degraded.jpg" alt="Portrait after CRT Monitor preset" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+          </div>
+          <div class="px-4 py-3 border-t border-zinc-100 flex items-center justify-between">
+            <span class="text-xs font-medium text-zinc-800">CRT Monitor Effect</span>
+            <span class="text-xs text-zinc-400 font-mono">Scan lines + noise + dimming</span>
+          </div>
+        </div>
+        <div class="card-raised overflow-hidden">
+          <div class="grid grid-cols-2">
+            <div><p class="text-xs text-zinc-400 text-center py-2 bg-zinc-50">Original</p><img src="/img/screen-pixelated-original.png" alt="Original screenshot before pixelation" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+            <div><p class="text-xs text-brand-400 text-center py-2 bg-brand-50">5× Pixelation</p><img src="/img/screen-pixelated-degraded.jpg" alt="Screenshot after 5x pixelation" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+          </div>
+          <div class="px-4 py-3 border-t border-zinc-100 flex items-center justify-between">
+            <span class="text-xs font-medium text-zinc-800">Privacy Pixelation</span>
+            <span class="text-xs text-zinc-400 font-mono">5× pixelation · PNG output</span>
+          </div>
+        </div>
+        <div class="card-raised overflow-hidden">
+          <div class="grid grid-cols-2">
+            <div><p class="text-xs text-zinc-400 text-center py-2 bg-zinc-50">Original</p><img src="/img/gradient-vintage-original.png" alt="Original gradient art before vintage effect" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+            <div><p class="text-xs text-brand-400 text-center py-2 bg-brand-50">2003 Phone</p><img src="/img/gradient-vintage-degraded.jpg" alt="Art after 2003 Phone preset" class="w-full aspect-square object-cover" width="400" height="400" loading="lazy" /></div>
+          </div>
+          <div class="px-4 py-3 border-t border-zinc-100 flex items-center justify-between">
+            <span class="text-xs font-medium text-zinc-800">2003 Phone Effect</span>
+            <span class="text-xs text-zinc-400 font-mono">19 KB → 17 KB · Vintage</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<!-- ============ DEEP FRIED MEME GUIDE ============ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        
+<div class="lg:w-1/3">
+          
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-3">Deep Fried 
+<span class="text-brand-500">Meme</span> Guide</h2>
+          
+<p class="text-sm text-zinc-400 leading-relaxed">The deep fried meme is internet culture’s most recognizable visual language. Originating on Tumblr around 2014 and exploding on Reddits <a href="https://www.reddit.com/r/DeepFriedMemes/" rel="nofollow noopener" target="_blank" class="text-brand-500 hover:text-brand-400 underline underline-offset-2">r/DeepFriedMemes</a> (500K+ members), the aesthetic relies on 
+<strong class="text-zinc-700">extreme JPEG compression artifacts, pixelation, oversaturation, and noise
+</strong> layered together to create an image that looks like it has been screenshotted, re-uploaded, and compressed dozens of times. Our tool replicates this process in a single click with three distinct frying levels, each tuned for a different stage of crustiness.</p>
+          
+<div class="mt-4 space-y-2">
+            
+<div class="flex items-center gap-2 text-xs text-zinc-500">
+<span class="w-2 h-2 rounded-full bg-brand-500/40 shrink-0">
+</span>Light Fry &mdash; subtle compression, still recognizable
+</div>
+            
+<div class="flex items-center gap-2 text-xs text-zinc-500">
+<span class="w-2 h-2 rounded-full bg-brand-500/60 shrink-0">
+</span>Classic Deep Fried &mdash; visible artifacts + slight noise
+</div>
+            
+<div class="flex items-center gap-2 text-xs text-zinc-500">
+<span class="w-2 h-2 rounded-full bg-brand-500 shrink-0">
+</span>Nuked &mdash; 8&times; pixelation, 35% noise, maximum chaos
+</div>
+          
+</div>
+        
+</div>
+        
+<div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">🧱
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">JPEG Artifacts</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">The signature visual of the deep fried aesthetic. JPEG compression divides your image into 8×8 pixel blocks and discards high-frequency detail within each block. At quality settings below 20%, these blocks become clearly visible as a grid of square artifacts across the image. Additional effects include ringing (halo artifacts around high-contrast edges), color banding in smooth gradients where skies and skin tones break into visible color steps, and mosquito noise around text and fine details. This is why the Nuked preset uses 10% quality—it maximizes visible block artifacts while still retaining the image’s core composition. For the authentic “re-uploaded 40 times” look, JPEG is the only format that matters.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">🌈
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">Oversaturation</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Colors blown out, brightness cranked, contrast dialed until it hurts—the visual language of excess. Deep fried memes use oversaturation as a comedic amplifier: pushing reds toward neon pink, blowing out highlights on faces, and crushing shadows into inky black blobs. In our tool, the Brightness slider (+20 in Nuked, +5 in Classic) shifts every pixel’s luminance upward before JPEG compression. Combined with low-quality encoding, this creates the characteristic “my eyes are burning” look where facial features become glowing, distorted highlights. The Nuked preset also adds a warm yellow overlay to simulate the color cast of repeated screenshotting on different color profiles. For maximum impact, pair high brightness with low quality—the JPEG encoder will aggressively quantize the already-clipped color values.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">🟫
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">Pixel Blocks</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Open Advanced Controls and crank Pixelation to 8× or higher. The pixelation algorithm works by downsampling your image to a tiny resolution (at 8×, a 2000×2000 image becomes 250×250), then re-upscaling it to the original dimensions using nearest-neighbor interpolation with imageSmoothingEnabled set to false. This creates sharp, perfectly square blocks instead of blurry interpolation. At 4× to 6×, faces become recognizable but blocky—good for standard memes. At 12× to 20×, the image becomes abstract geometric art. The Nuked preset uses 8× as the sweet spot between legibility and chaos. Combine high pixelation with JPEG artifacts for the most authentic deep fried look: the pixel blocks themselves get compressed, creating a recursive degradation that mimics real re-upload cycles.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📺
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">Noise Layer</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Grain layered on top for extra crust. Our noise engine uses getImageData() to access the raw pixel buffer and adds per-pixel random perturbation to every RGB channel independently. At 20–35% intensity (the Nuked and Classic ranges), the noise creates an analog static feel that makes a meme feel genuinely degraded rather than just compressed. At 50%+, the noise overwhelms the original image—useful for extreme cursed memes and abstract compositions. Unlike simple overlay approaches, our noise is computed per-channel, which means red, green, and blue values diverge independently, creating subtle color shifts that mimic the sensor noise of cheap digital cameras. The CRT preset uses low noise (8%) specifically to simulate the electron beam jitter of cathode-ray tubes. Noise also interacts with JPEG compression: random pixel variation is high-frequency detail that the JPEG encoder tries to preserve, producing a richer, more textured degradation.</p>
+</div>
+        
+</div>
+      
+</div>
+    
+</section>
+    
+<!-- ============ COMPRESSION GUIDE ============ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        
+<div class="lg:w-1/3">
+          
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-3">Target File 
+<span class="text-brand-500">Size</span> Compression</h2>
+          
+<p class="text-sm text-zinc-400 leading-relaxed">Most image compressors shrink your photo’s pixel dimensions — turning a 4000×3000 image into a tiny thumbnail. That is not what you want when a government form asks for a 300×400 photo under 50KB. 
+<strong class="text-zinc-700">Our tool keeps your exact pixel dimensions
+</strong> and only adjusts JPEG quality parameters. The Auto-Match feature 
+<strong class="text-zinc-700">runs a 9-iteration binary search
+</strong> across 100 quality levels (1% to 100%) to find the highest-quality setting that produces a file under your target KB. No trial and error, no guessing, no resizing — just type your number and click.</p>
+          
+<p class="text-xs text-zinc-400 mt-3 font-mono">Open Advanced Controls &rarr; enter KB &rarr; Auto-Match</p>
+        
+</div>
+        
+<div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📱
+</div>
+<div class="text-sm font-semibold text-zinc-800 mb-1">Discord
+</div>
+<div class="text-brand-500 font-mono text-xs mb-1.5">8 MB (free) / 50 MB (Nitro)
+</div>
+<p class="text-xs text-zinc-500 leading-relaxed">Discord’s free tier rejects uploads over 8MB with a silent failure—your image just does not appear. Our tool crushes high-res screenshots and photos under the limit while keeping full pixel dimensions. A 12MB gaming screenshot compressed at quality 55–65% typically lands around 6–7MB, giving you a comfortable margin. For Nitro Basic (50MB) or Nitro (500MB), use the Auto-Match feature with your exact target. The key advantage over resizing: your image fills the same space in chat but the file fits. Also works for Discord profile banners (6MB limit) and server icons.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📋
+</div>
+<div class="text-sm font-semibold text-zinc-800 mb-1">Government &amp; Exam Forms
+</div>
+<div class="text-brand-500 font-mono text-xs mb-1.5">20–50 KB photos
+</div>
+<p class="text-xs text-zinc-500 leading-relaxed">Passport applications, visa photos, and exam portals (UPSC, SSC, IBPS, NEET, banking) enforce dual constraints: specific pixel dimensions AND a max file size of 20–50KB. Resizing tools break the pixel requirement; our tool keeps exact dimensions and only adjusts JPEG quality. Auto-Match enters a target like 50, runs 9 binary search iterations, and finds the optimal quality—often around 15–25%—that stays under the limit. For Indian passport photos (200×300px, 10–20KB), US passports (600×600px, under 240KB), and UK visas (900×1200px, under 6MB), the workflow is identical: upload, enter target KB, click Auto-Match, download. All processing is local, so sensitive ID photos never touch a server.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📧
+</div>
+<div class="text-sm font-semibold text-zinc-800 mb-1">Email Attachments
+</div>
+<div class="text-brand-500 font-mono text-xs mb-1.5">25 MB limit (Gmail/Outlook)
+</div>
+<p class="text-xs text-zinc-500 leading-relaxed">Gmail and Outlook both cap attachments at 25MB per email, and a single high-res DSLR photo (20–30MB) already exceeds that. Rather than creating a ZIP archive or uploading to a cloud drive and sharing a link, compress the photo directly: upload here, enter 20000 (20MB for multi-photo emails) in Target File Size, and Auto-Match finds the highest quality under your ceiling. The photo keeps its full 4000×3000 resolution—it just uses heavier JPEG compression. For sending 3–5 photos in one email, target 4–5MB each and they will all fit. Yahoo Mail (25MB), ProtonMail (25MB free), and iCloud Mail (20MB) have similar limits. For truly massive batches, use the batch processing feature to compress a whole folder at once with identical settings.</p>
+</div>
+        
+</div>
+      
+</div>
+    
+</section>
+    
+<!-- ============ PIXELATION GUIDE ============ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        
+<div class="lg:w-1/3">
+          
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-3">
+<span class="text-brand-500">Pixelation</span> for Privacy &amp; Style</h2>
+          
+<p class="text-sm text-zinc-400 leading-relaxed">Adjustable pixelation from subtle 2× to total-abstraction 20×, controlled by a single slider in Advanced Controls. The pixelation algorithm works by downsampling your image to a fraction of its original resolution using nearest-neighbor interpolation (imageSmoothingEnabled = false), then re-upscaling it to the original dimensions. This creates sharp, perfectly square blocks rather than the blurry result you would get from bilinear or bicubic scaling. 
+<strong class="text-zinc-700">Crucially, the pixelation is baked into the downloaded image data
+</strong>—it is not a CSS overlay or a viewport trick. Once you download the pixelated image, the effect is irreversible and permanent, making it ideal for privacy redaction where you need guaranteed, forensic-level censorship that cannot be undone by inspecting the page source or removing a CSS filter.</p>
+          
+<p class="text-xs text-zinc-400 mt-3 font-mono">Advanced Controls &rarr; Pixelation slider</p>
+        
+</div>
+        
+<div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">🔒
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">Censor Sensitive Info</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Blur faces, license plates, addresses, credit card numbers, and personal data before sharing screenshots publicly. Unlike screenshot annotation apps that draw a colored rectangle over sensitive areas (which can sometimes be removed or seen through by adjusting contrast), our pixelation rewrites the actual pixel data at the image buffer level. At 8× pixelation, a face becomes a grid of 60–80 colored blocks with zero recoverable detail—forensically irreversible. 
+<strong class="text-zinc-700">Recommended settings:
+</strong> 6× for faces, 4× for text and numbers, 10× for license plates and ID numbers. Download as PNG to preserve the sharp block edges without JPEG compression artifacts that could soften the censorship.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">🎮
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">8-Bit / Pixel Art</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Transform any photo into pixel art without specialized software. At 4× pixelation, a 2000×2000 image becomes a 500×500 grid of colored blocks—comparable to a Nintendo DS screen. At 6× (333×333 effective blocks), you get the classic Super Nintendo / Sega Genesis sprite resolution. At 12×, the image becomes an abstract mosaic of 166×166 blocks—perfect for album art backgrounds and modern pixel-art interpretations. 
+<strong class="text-zinc-700">Pro tip:
+</strong> download as PNG to preserve the hard pixel edges. JPEG compression will blur the block boundaries slightly, which ruins the effect. For maximum retro authenticity, combine 6× pixelation with the 2003 Phone preset to get pixel art with period-appropriate color casts and noise.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">🧨
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">Meme Ingredient</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Pixelation is one of three core degradation dimensions in every deep fried meme, alongside JPEG compression and noise. The Nuked preset combines all three at aggressive levels: 8× pixelation + 35% noise + 10% JPEG quality. But you can customize: reduce pixelation to 2× for a meme where the subject is still recognizable, or push it to 12× for abstract absurdist memes where the original content is barely discernible. 
+<strong class="text-zinc-700">The interaction effect matters most:
+</strong> pixelation creates large blocks, JPEG compression then artifacts those blocks with 8×8 grids, and noise adds per-pixel randomness on top. This three-layer degradation mimics the authentic “re-uploaded 40 times” process better than any single effect alone. The Classic Deep Fried preset uses 2× pixelation as a subtle base, while Nuked at 8× makes it the dominant visual feature.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📱
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">Vintage Phone Look</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">The 2003 Phone preset combines 6× pixelation, 20% noise, and a cool blue tint to recreate early cameraphone photography—Motorola RAZR V3 (0.3MP, fixed focus), Nokia 6600 (VGA, no autofocus), Sony Ericsson T610 (CIF resolution). These phones produced images with distinct visual signatures: low pixel count (640×480 or smaller), aggressive JPEG compression to fit in tiny internal storage, heavy chroma noise in low light, and a blue/cool color cast from early CMOS sensors. Our preset replicates all three simultaneously. 
+<strong class="text-zinc-700">Customizing the look:
+</strong> reduce pixelation to 3× for a 2010-era BlackBerry or early iPhone 3G aesthetic. Increase noise to 40% for a “shot in a dark club” vibe. Add blur (3–5) for the soft-focus look of fixed-focus lenses on subjects closer than 1 meter. Download as JPEG at 20% quality to match the aggressive compression those phones applied to fit photos in 1–2MB of total storage.</p>
+</div>
+        
+</div>
+      
+</div>
+    
+</section>
+        
+<!-- ============ BEST SETTINGS REFERENCE ============ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="text-center mb-10">
+        
+<span class="sec-label mb-4">Quick Reference</span>
+        
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mt-3">Best settings for every scenario</h2>
+      
+</div>
+      
+<p class="text-sm text-zinc-500 text-center max-w-xl mx-auto mb-10">
+        Not sure what settings to use? Here is a quick reference guide with recommended configurations for the most common use cases.      </p>
+      
+<div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          
+<thead>
+            <tr class="border-b border-zinc-200 text-zinc-500">
+              
+<th class="py-3 px-3 font-medium">What you want</th>
+              
+<th class="py-3 px-3 font-medium hidden sm:table-cell">Preset</th>
+              
+<th class="py-3 px-3 font-medium hidden sm:table-cell">Quality</th>
+              
+<th class="py-3 px-3 font-medium hidden md:table-cell">Pixelation</th>
+              
+<th class="py-3 px-3 font-medium hidden md:table-cell">Noise</th>
+              
+<th class="py-3 px-3 font-medium">Format</th>
+            
+</tr>
+          
+</thead>
+          <tbody class="text-zinc-500 [&_tr:nth-child(even)]:bg-zinc-50/70">
+            <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">Maximum crust deep fried meme</span><br>
+<span class="text-zinc-400 text-[10px]">Reddit r/DeepFriedMemes, extreme irony</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell">
+<span class="text-brand-400 font-mono">Nuked</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">10%</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">8×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">35%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">JPEG</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">Standard Reddit meme</span><br>
+<span class="text-zinc-400 text-[10px]">Visible artifacts, not total destruction</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell">
+<span class="text-brand-400 font-mono">Classic</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">20%</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">2×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">15%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">JPEG</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">Discord upload (under 8MB)</span><br>
+<span class="text-zinc-400 text-[10px]">Bypass free-tier upload cap</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono text-zinc-500">—</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">Auto-Match</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">1×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">0%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">JPEG</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">Government form photo (under 50KB)</span><br>
+<span class="text-zinc-400 text-[10px]">Passport, visa, UPSC, SSC, IBPS</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono text-zinc-500">—</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">Auto-Match 50KB</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">1×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">0%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">JPEG</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">Censor faces / sensitive text</span><br>
+<span class="text-zinc-400 text-[10px]">Permanent privacy masking</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono text-zinc-500">—</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">80%</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">8×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">0%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">PNG</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">8-bit pixel art aesthetic</span><br>
+<span class="text-zinc-400 text-[10px]">Retro game look, creative projects</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono text-zinc-500">—</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">90%</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">6×–12×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">0%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">PNG</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">CRT monitor nostalgia</span><br>
+<span class="text-zinc-400 text-[10px]">90s computing, vaporwave, synthwave</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell">
+<span class="text-brand-400 font-mono">CRT</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">40%</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">1×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">8%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">JPEG</td>
+            
+</tr>
+            <tr class="hover:bg-white/50 transition-colors">
+              
+<td class="py-3 px-3">
+<span class="text-zinc-800 font-medium">2003 cameraphone look</span><br>
+<span class="text-zinc-400 text-[10px]">Motorola RAZR, Nokia 6600 nostalgia</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell">
+<span class="text-brand-400 font-mono">2003 Phone</span>
+</td>
+              
+<td class="py-3 px-3 hidden sm:table-cell font-mono">20%</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">6×</td>
+              
+<td class="py-3 px-3 hidden md:table-cell font-mono">20%</td>
+              
+<td class="py-3 px-3 font-mono text-brand-400">JPEG</td>
+            
+</tr>
+          
+</tbody>
+        
+</table>
+      
+</div>
+      
+<p class="text-xs text-zinc-400 mt-4 text-center">Pro tip: Start with a preset, then open Advanced Controls to see exactly which parameters it set. Tweak from there to build your own custom style.</p>
+    
+</section>
+<!-- ============ RETRO & GIF GUIDE ============ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        
+<div class="lg:w-1/3">
+          
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-3">Retro &amp; 
+<span class="text-brand-500">Vintage</span> Effects</h2>
+          
+<p class="text-sm text-zinc-400 leading-relaxed">Low quality is not just about compression — it is a visual language with distinct dialects. 
+<strong class="text-zinc-700">CRT Monitor:
+</strong> horizontal black scan lines every 3px with subtle noise and a slight brightness reduction, recreating the phosphor glow of a 1990s CRT display. 
+<strong class="text-zinc-700">2003 Flip Phone:
+</strong> 6× pixelation with a cool blue tint and chunky noise, evoking the VGA camera sensors of early-2000s mobile phones like the Motorola RAZR and Nokia 6600. 
+<strong class="text-zinc-700">Custom combinations:
+</strong> use the Advanced Controls to layer any mix of effects — try 4× pixelation + 20% noise + CRT scan lines for a corrupted 90s broadcast look. All effects run locally; none of your images are uploaded.</p>
+          
+<p class="text-xs text-zinc-400 mt-3 font-mono">Presets: CRT Monitor &middot; 2003 Phone &middot; Custom combos</p>
+        
+</div>
+        
+<div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📺
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">CRT Monitor</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Horizontal scan lines every 3px, subtle noise, slight dimming. Captures the phosphor glow of a CRT screen.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📞
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">2003 Flip Phone</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Low resolution, cool blue tint, chunky noise. The exact look of a photo taken on a Motorola RAZR.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">📼
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">VHS Color Bleed</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Slight color shift, analog warmth, reduced sharpness. Like a tape that's been played one too many times.</p>
+</div>
+          
+<div class="card-flat p-4">
+<div class="text-2xl mb-2">🔄
+</div>
+<h4 class="text-xs font-semibold text-zinc-800 mb-1">GIF Degradation</h4>
+<p class="text-xs text-zinc-500 leading-relaxed">Upload animated GIFs and apply all the same effects. Great for deep fried reaction GIFs. Full frame-by-frame support ready now.</p>
+</div>
+        
+</div>
+      
+</div>
+    
+</section>
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 text-center mb-4">
+        How to use the low quality image maker      </h2>
+      
+<p class="text-sm text-zinc-500 text-center max-w-xl mx-auto mb-10">
+        From upload to download in under 30 seconds. No software, no signup, no server uploads — everything happens inside your browser at native speed.      </p>
+      
+<div class="space-y-4">
+        
+<!-- Step 1 -->
+        
+<div class="card-raised p-6 md:p-8">
+          
+<div class="flex items-start gap-4">
+            
+<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-500 text-zinc-900 text-lg font-bold shrink-0 mt-0.5">1</span>
+            
+<div class="flex-1">
+              
+<h3 class="text-base font-semibold text-zinc-900 mb-2">Upload Your Image</h3>
+              
+<p class="text-sm text-zinc-400 leading-relaxed">Click the upload zone or 
+<strong class="text-zinc-700">drag and drop any image file
+</strong> directly from your desktop or file explorer. The tool accepts 
+<strong class="text-zinc-700">JPEG, PNG, WebP, GIF, and BMP
+</strong> files up to 100MB each. Need to process multiple images? Select several files at once (hold Ctrl or Cmd while clicking) or drag a group — the batch processor handles them all with the same settings. 
+<strong class="text-zinc-700">Your file never leaves your device
+</strong>: the browser reads it directly into memory using the FileReader API. No network request is made.</p>
+              
+<div class="mt-3 flex flex-wrap gap-2">
+                
+<span class="inline-flex items-center gap-1 text-xs text-zinc-500 bg-zinc-50 rounded-md px-2 py-0.5">
+<span class="text-brand-500">✓</span> JPEG, PNG, WebP, GIF, BMP</span>
+                
+<span class="inline-flex items-center gap-1 text-xs text-zinc-500 bg-zinc-50 rounded-md px-2 py-0.5">
+<span class="text-brand-500">✓</span> Up to 100MB per file</span>
+                
+<span class="inline-flex items-center gap-1 text-xs text-zinc-500 bg-zinc-50 rounded-md px-2 py-0.5">
+<span class="text-brand-500">✓</span> Multiple files supported</span>
+              
+</div>
+            
+</div>
+          
+</div>
+        
+</div>
+        
+<!-- Step 2 -->
+        
+<div class="card-raised p-6 md:p-8">
+          
+<div class="flex items-start gap-4">
+            
+<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-500 text-zinc-900 text-lg font-bold shrink-0 mt-0.5">2</span>
+            
+<div class="flex-1">
+              
+<h3 class="text-base font-semibold text-zinc-900 mb-2">Choose Your Degradation Method</h3>
+              
+<p class="text-sm text-zinc-400 leading-relaxed">You have 
+<strong class="text-zinc-700">four ways
+</strong> to control the output, depending on how much precision you need:</p>
+              
+<div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                
+<div class="bg-zinc-50 rounded-lg p-3">
+                  
+<div class="text-xs font-semibold text-brand-400 mb-1">A. Quality Slider
+</div>
+                  
+<p class="text-xs text-zinc-500 leading-relaxed">Drag from 1% (maximum compression, smallest file) to 100% (near-original). The file size updates in real time below the preview. Ideal for quick compression when you do not need an exact target.</p>
+                
+</div>
+                
+<div class="bg-zinc-50 rounded-lg p-3">
+                  
+<div class="text-xs font-semibold text-brand-400 mb-1">B. One-Click Presets
+</div>
+                  
+<p class="text-xs text-zinc-500 leading-relaxed">Five pre-configured styles: Light Fry, Classic Deep Fried, Nuked, 2003 Phone, CRT Monitor. Each preset sets the quality slider and all four advanced parameters to curated values. Click a preset, see the sliders update, then tweak anything further.</p>
+                
+</div>
+                
+<div class="bg-zinc-50 rounded-lg p-3">
+                  
+<div class="text-xs font-semibold text-brand-400 mb-1">C. Advanced Controls
+</div>
+                  
+<p class="text-xs text-zinc-500 leading-relaxed">Expand the Advanced panel for four independent sliders: Pixelation (1×–20×), Noise (0–100%), Blur (0–20), and Brightness (−50 to +50). Combine them freely for custom effects unavailable in any other free tool.</p>
+                
+</div>
+                
+<div class="bg-zinc-50 rounded-lg p-3">
+                  
+<div class="text-xs font-semibold text-brand-400 mb-1">D. Target File Size Auto-Match
+</div>
+                  
+<p class="text-xs text-zinc-500 leading-relaxed">Type your target KB (e.g. 50 for 50KB), click Auto-Match. The tool runs a 9-iteration binary search across quality levels 1–100 to find the optimal setting. Perfect for government forms, Discord limits, and email caps.</p>
+                
+</div>
+              
+</div>
+            
+</div>
+          
+</div>
+        
+</div>
+        
+<!-- Step 3 -->
+        
+<div class="card-raised p-6 md:p-8">
+          
+<div class="flex items-start gap-4">
+            
+<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-500 text-zinc-900 text-lg font-bold shrink-0 mt-0.5">3</span>
+            
+<div class="flex-1">
+              
+<h3 class="text-base font-semibold text-zinc-900 mb-2">Download or Copy</h3>
+              
+<p class="text-sm text-zinc-400 leading-relaxed">When you are satisfied with the preview, click 
+<strong class="text-zinc-700">Download
+</strong> to save the degraded image to your device. Choose your output format (JPEG, PNG, or WebP) from the Advanced Controls panel before downloading. The file name includes a timestamp so you will not overwrite your original. Use the 
+<strong class="text-zinc-700">Copy
+</strong> button to place the processed image directly on your clipboard — paste it instantly into Discord, Slack, Twitter, or any app that accepts pasted images. 
+<strong class="text-zinc-700">No watermarks, no registration, no usage limits.
+</strong> Process another image immediately — there is no cooldown, no daily cap, and no queue.</p>
+              
+<div class="mt-3 flex flex-wrap gap-2">
+                
+<span class="inline-flex items-center gap-1 text-xs text-zinc-500 bg-zinc-50 rounded-md px-2 py-0.5">
+<span class="text-brand-500">✓</span> JPEG / PNG / WebP output</span>
+                
+<span class="inline-flex items-center gap-1 text-xs text-zinc-500 bg-zinc-50 rounded-md px-2 py-0.5">
+<span class="text-brand-500">✓</span> One-click Copy to clipboard</span>
+                
+<span class="inline-flex items-center gap-1 text-xs text-zinc-500 bg-zinc-50 rounded-md px-2 py-0.5">
+<span class="text-brand-500">✓</span> No watermarks, ever</span>
+              
+</div>
+            
+</div>
+          
+</div>
+        
+</div>
+      
+</div>
+      
+<!-- HowTo Schema (hidden) -->
+      
+<script type="application/ld+json" set:html={JSON.stringify({        '@context': 'https://schema.org',        '@type': 'HowTo',        name: 'How to Make an Image Low Quality',        step: [          { '@type': 'HowToStep', position: 1, name: 'Upload Image', text: 'Drag and drop any image file into the upload zone. Supports JPEG, PNG, WebP, GIF, and BMP up to 100MB.' },          { '@type': 'HowToStep', position: 2, name: 'Adjust Quality', text: 'Use the quality slider to set your desired degradation level, or click a preset like Deep Fried or CRT Monitor for instant effects.' },          { '@type': 'HowToStep', position: 3, name: 'Download', text: 'Click the download button to save your degraded image. No watermarks, no registration required.' },        ],      })} />
+    
+    <!-- ============ CONTENT TYPES ============ -->
+    <section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 text-center mb-4">
+        Works with <span class="text-brand-500">any image type</span>
+      </h2>
+      <p class="text-sm text-zinc-500 text-center max-w-2xl mx-auto mb-10">
+        The same client-side Canvas engine adapts every preset to your content. Memes, portraits, screenshots, landscape photos, logos, and product shots all degrade authentically. See real before-and-after examples in the gallery above, or drag an image into the tool below.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 max-w-4xl mx-auto">
+        <div class="card-flat p-4 text-center">
+          <div class="text-2xl mb-2">🧨</div>
+          <div class="text-xs font-semibold text-zinc-800">Meme Templates</div>
+          <div class="text-[10px] text-zinc-400 mt-1">Nuked preset excels</div>
+        </div>
+        <div class="card-flat p-4 text-center">
+          <div class="text-2xl mb-2">👤</div>
+          <div class="text-xs font-semibold text-zinc-800">Portrait Photos</div>
+          <div class="text-[10px] text-zinc-400 mt-1">Classic or CRT effects</div>
+        </div>
+        <div class="card-flat p-4 text-center">
+          <div class="text-2xl mb-2">💻</div>
+          <div class="text-xs font-semibold text-zinc-800">Screenshots</div>
+          <div class="text-[10px] text-zinc-400 mt-1">Pixelation for privacy</div>
+        </div>
+        <div class="card-flat p-4 text-center">
+          <div class="text-2xl mb-2">🏔️</div>
+          <div class="text-xs font-semibold text-zinc-800">Landscape Photos</div>
+          <div class="text-[10px] text-zinc-400 mt-1">Vintage 2003 Phone</div>
+        </div>
+        <div class="card-flat p-4 text-center">
+          <div class="text-2xl mb-2">🎨</div>
+          <div class="text-xs font-semibold text-zinc-800">Graphics &amp; Logos</div>
+          <div class="text-[10px] text-zinc-400 mt-1">Light Fry for texture</div>
+        </div>
+        <div class="card-flat p-4 text-center">
+          <div class="text-2xl mb-2">📦</div>
+          <div class="text-xs font-semibold text-zinc-800">Product Photos</div>
+          <div class="text-[10px] text-zinc-400 mt-1">Target size compression</div>
+        </div>
+      </div>
+      <p class="text-center mt-8">
+        <a href="#tool-root" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-500 text-white font-medium text-sm hover:bg-brand-600 transition-colors">
+          Try it on your image now &rarr;
+        </a>
+      </p>
+    </section>
+
+        
+<!-- ============ HOW IT WORKS TECHNICALLY ============ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 text-center mb-4">
+        How the degradation engine works      </h2>
+      
+<p class="text-sm text-zinc-500 text-center max-w-xl mx-auto mb-10">
+        Understanding what happens under the hood helps you get the exact results you want. Every effect runs in a specific order for the most natural degradation.      </p>
+      
+<div class="max-w-3xl mx-auto space-y-4">
+        
+<div class="bg-white rounded-xl border border-zinc-200 p-5">
+          
+<div class="flex items-start gap-4">
+            
+<span class="text-brand-500 font-mono text-xs shrink-0 mt-0.5">Step 1</span>
+            <div>
+              
+<h4 class="text-sm font-semibold text-zinc-800 mb-1">Pixelation (Resolution Reduction)</h4>
+              
+<p class="text-xs text-zinc-500 leading-relaxed">The image is drawn at a reduced resolution (original width divided by pixelation factor), then scaled back up with 
+<strong class="text-zinc-400">image smoothing disabled
+</strong>. At 8x, the image is rendered at 1/8th size then blown up, creating sharp pixel blocks. This is the foundation of the deep fried look and the most effective way to obscure faces and text for privacy. Unlike CSS-based blur overlays that can be bypassed, our pixelation rewrites the actual image data - the effect is baked into the downloaded file and cannot be reversed.</p>
+            
+</div>
+          
+</div>
+        
+</div>
+        
+<div class="bg-white rounded-xl border border-zinc-200 p-5">
+          
+<div class="flex items-start gap-4">
+            
+<span class="text-brand-500 font-mono text-xs shrink-0 mt-0.5">Step 2</span>
+            <div>
+              
+<h4 class="text-sm font-semibold text-zinc-800 mb-1">Blur (Downscale-Upscale Softening)</h4>
+              
+<p class="text-xs text-zinc-500 leading-relaxed">Rather than using a Gaussian convolution kernel, blur is achieved by 
+<strong class="text-zinc-400">drawing the image at a reduced scale then stretching it back
+</strong>. At blur level 10, the image is rendered at approximately 50% of its original size, then expanded to fill the full canvas. Higher blur values use progressively smaller intermediate canvases for stronger softening. The result is similar to a box blur - edges soften, fine details merge, and the image takes on a dreamy, unfocused quality.</p>
+            
+</div>
+          
+</div>
+        
+</div>
+        
+<div class="bg-white rounded-xl border border-zinc-200 p-5">
+          
+<div class="flex items-start gap-4">
+            
+<span class="text-brand-500 font-mono text-xs shrink-0 mt-0.5">Step 3</span>
+            <div>
+              
+<h4 class="text-sm font-semibold text-zinc-800 mb-1">Noise (Per-Pixel Random Perturbation)</h4>
+              
+<p class="text-xs text-zinc-500 leading-relaxed">Every pixel's RGB values are offset by a 
+<strong class="text-zinc-400">random amount within the noise intensity range
+</strong>. At 35% noise (the Nuked preset level), each color channel fluctuates by up to plus or minus 89 units. At low levels (5-10%), noise adds subtle film grain. At high levels (30-50%), it creates aggressive analog static reminiscent of a detuned CRT television or a heavily compressed digital video feed.</p>
+            
+</div>
+          
+</div>
+        
+</div>
+        
+<div class="bg-white rounded-xl border border-zinc-200 p-5">
+          
+<div class="flex items-start gap-4">
+            
+<span class="text-brand-500 font-mono text-xs shrink-0 mt-0.5">Step 4</span>
+            <div>
+              
+<h4 class="text-sm font-semibold text-zinc-800 mb-1">Brightness (Linear Channel Shift)</h4>
+              
+<p class="text-xs text-zinc-500 leading-relaxed">Each pixel's RGB values are shifted by a fixed amount: positive values brighten, negative values darken. At +20 brightness (Nuked preset), every channel increases by approximately 51 units in the 0-255 range. At -10 (CRT preset), every channel decreases by about 25 units. This is a 
+<strong class="text-zinc-400">linear shift
+</strong>, not a gamma correction - highlights clip more aggressively into pure white and shadows crush into pure black, producing the look of an overexposed or underexposed photograph.</p>
+            
+</div>
+          
+</div>
+        
+</div>
+        
+<div class="bg-white rounded-xl border border-zinc-200 p-5">
+          
+<div class="flex items-start gap-4">
+            
+<span class="text-brand-500 font-mono text-xs shrink-0 mt-0.5">Step 5</span>
+            <div>
+              
+<h4 class="text-sm font-semibold text-zinc-800 mb-1">JPEG Compression (Quality Encoding)</h4>
+              
+<p class="text-xs text-zinc-500 leading-relaxed">The final canvas is exported via 
+<code class="text-zinc-500 bg-zinc-50 px-1 rounded text-[10px]">canvas.toBlob()</code> at the specified quality level (1-100). JPEG applies 
+<strong class="text-zinc-400">8-by-8 block-based Discrete Cosine Transform compression
+</strong>, which is the source of the characteristic blocky artifacts, color banding, and mosquito noise around sharp edges. At 10% quality, the compression is extremely aggressive - each 8x8 block is heavily quantized, producing the classic deep fried artifact pattern. PNG output skips this step entirely (lossless). WebP uses its own predictive coding algorithm with similar quality scaling but better efficiency at low bitrates.</p>
+            
+</div>
+          
+</div>
+        
+</div>
+        
+<div class="bg-white rounded-xl border border-zinc-200 p-5">
+          
+<div class="flex items-start gap-4">
+            
+<span class="text-brand-500 font-mono text-xs shrink-0 mt-0.5">Extra</span>
+            <div>
+              
+<h4 class="text-sm font-semibold text-zinc-800 mb-1">Preset-Specific Effects (Overlay Layer)</h4>
+              
+<p class="text-xs text-zinc-500 leading-relaxed">After the five-step pipeline, presets apply additional effects as a final overlay: 
+<strong class="text-zinc-400">Nuked
+</strong> adds a warm yellow overlay at 30% opacity for the blown-out look. 
+<strong class="text-zinc-400">CRT Monitor
+</strong> draws 1px black horizontal lines every 3px to simulate phosphor scan lines. 
+<strong class="text-zinc-400">2003 Phone
+</strong> applies a cool blue tint at 10% opacity. These overlays are themselves affected by the JPEG compression step - the scan lines and tints acquire compression artifacts just like the rest of the image, adding to the authenticity of the effect.</p>
+            
+</div>
+          
+</div>
+        
+</div>
+      
+</div>
+      
+<p class="text-center text-xs text-zinc-400 mt-6">All steps execute synchronously via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" rel="nofollow noopener" target="_blank" class="text-brand-500 hover:text-brand-400 underline underline-offset-2">Canvas 2D API</a>. A typical 12-megapixel photograph processes in under 50 milliseconds on modern hardware. The 
+<strong class="text-zinc-500">Target File Size Auto-Match
+</strong> mode runs this entire pipeline up to 9 times with different quality values, using binary search to converge on the optimal setting.</p>
+    
+</section>
+<!-- ═══════════ FAQ ═══════════ -->
+    
+<section id="faq" class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 text-center mb-10">
+        Frequently asked questions      </h2>
+      
+<div class="max-w-2xl mx-auto divide-y divide-zinc-200">
+        
+<!-- Q1 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">How do I make an image lower quality online?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">Step 1:
+</strong> Drag and drop any image (JPEG, PNG, WebP, GIF, or BMP) into the upload zone above. 
+<strong class="text-zinc-700">Step 2:
+</strong> Use the quality slider to set your desired degradation level — lower percentages mean more compression and smaller file sizes. You will see the file size change in real time in the preview panel. 
+<strong class="text-zinc-700">Step 3:
+</strong> Optionally click a preset button like Nuked for deep fried memes or CRT Monitor for retro effects. 
+<strong class="text-zinc-700">Step 4:
+</strong> Open Advanced Controls for fine-grained adjustments to pixelation, noise, blur, and brightness. 
+<strong class="text-zinc-700">Step 5:
+</strong> Click Download when satisfied. No watermarks, no registration, no limits.</p>
+        
+</details>
+        
+<!-- Q2 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Is this tool safe and private?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">100% yes, and here is why:
+</strong> All image processing runs entirely inside your web browser using the HTML5 Canvas API. Your files are never transmitted to any remote server. No data leaves your device at any point during upload, processing, or download. You can verify this yourself — open your browser’s Developer Tools Network tab while using the tool and you will see zero network requests during processing. You can even disconnect your internet connection entirely and the tool continues to work. We do not use cookies, analytics trackers, or any form of data collection. This makes the tool particularly suitable for sensitive documents like passport photos, ID cards, medical images, or any private photograph you would not want uploaded to a third-party server.</p>
+        
+</details>
+        
+<!-- Q3 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">What image formats are supported?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">Input formats:
+</strong> JPEG (.jpg, .jpeg), PNG (.png), WebP (.webp), GIF (.gif), and BMP (.bmp). Maximum input file size is 
+<strong class="text-zinc-700">100MB
+</strong> per file. You can upload multiple files simultaneously for batch processing. 
+<strong class="text-zinc-700">Output formats:
+</strong> JPEG (best for deep fried effects and maximum compression), PNG (lossless, preserves transparency, larger files), or WebP (modern balance of quality and size). Select your output format from the Advanced Controls panel. For deep fried memes and compression, JPEG at 10–30% quality is recommended. For pixel art and privacy masking, PNG preserves sharp pixel edges. For general use, WebP offers the best quality-to-size ratio.</p>
+        
+</details>
+        
+<!-- Q4 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Can I make deep fried memes with this?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">Absolutely — this tool is built for it. 
+<strong class="text-zinc-700">Nuked preset:
+</strong> applies 8× pixelation, 35% noise, over-brightening, and 10% JPEG quality for the maximum “screenshotted 40 times” look. 
+<strong class="text-zinc-700">Classic Deep Fried:
+</strong> 2× pixelation, 15% noise, slight brightening at 20% quality — the standard Reddit r/DeepFriedMemes aesthetic. 
+<strong class="text-zinc-700">Light Fry:
+</strong> subtle JPEG compression at 30% quality, recognizable but degraded. Each preset also updates the Advanced Controls sliders so you can see exactly what parameters are being applied and tweak them further. The processing happens entirely in your browser, so no one can see your cursed creations until you choose to share them.</p>
+        
+</details>
+        
+<!-- Q5 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">How much can I reduce the file size?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">You can reduce image quality down to 1%, often 
+<strong class="text-zinc-700">reducing file size by over 95%
+</strong>. For example, a typical 4MB smartphone photo becomes approximately 30–50KB at 5% quality while keeping the same pixel dimensions. At 1% quality, that same photo can shrink to under 10KB. For precise file size targeting, use the 
+<strong class="text-zinc-700">Target File Size Auto-Match
+</strong> feature in Advanced Controls: enter your desired KB (e.g., 50 for a government form photo requirement), and the tool performs a binary search across 9 quality levels to find the optimal setting that stays under your target while preserving the best possible visual quality. This is especially useful for Discord’s 8MB limit, email’s 25MB cap, and government portal requirements of 20–50KB.</p>
+        
+</details>
+        
+<!-- Q6 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Does it work on iPhone and Android?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">Yes. The tool is fully responsive and works in 
+<strong class="text-zinc-700">all modern mobile browsers
+</strong> including Safari on iOS, Chrome on Android, Firefox, and Edge. No app download is required — simply open this page on your phone, tap the upload zone to select a photo from your camera roll, adjust the quality slider, and download. All processing happens on-device using your phone’s GPU-accelerated browser engine. The interface automatically adapts: on desktop, the upload and preview panels sit side by side; on mobile, they stack vertically for comfortable thumb navigation. All touch targets meet the 44×44px minimum for accessibility.</p>
+        
+</details>
+        
+<!-- Q7 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Is this really free?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">100% free with absolutely no strings attached.
+</strong> There are no daily usage limits, no watermarks on downloaded images, no forced registration, and no premium tier to upsell you to. We do not even have a payment system. Process as many images as you want, every day, forever. The tool operates entirely in your browser, which means our hosting costs are minimal — we only serve static HTML, CSS, and JavaScript files. There is no server-side processing to pay for, no image storage to maintain, and no user database to manage. This architecture lets us offer the tool completely free indefinitely without ever needing to monetize.</p>
+        
+</details>
+        
+<!-- Q8 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Why do people intentionally make images low quality?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">Intentional image degradation serves several distinct purposes. 
+<strong class="text-zinc-700">Internet culture and humor:
+</strong> Deep fried memes use extreme JPEG compression, pixelation, and oversaturation as a form of irony and absurdist comedy. The aesthetic originated on Tumblr around 2014–2015 and grew into a major format on Reddit (r/DeepFriedMemes has over 500,000 members), Discord, and Twitter. 
+<strong class="text-zinc-700">Practical file compression:
+</strong> Many platforms enforce strict file size limits — Discord’s free tier caps at 8MB, Gmail at 25MB, and government portals often require photos under 50KB. 
+<strong class="text-zinc-700">Privacy and censorship:
+</strong> Pixelation is the standard method for obscuring faces, license plates, addresses, and other sensitive information in images shared publicly. 
+<strong class="text-zinc-700">Aesthetic and nostalgia:
+</strong> CRT scan lines, VHS color bleed, and early-2000s cameraphone grain evoke specific eras of digital culture, used in music videos, album art, and brand identities.</p>
+        
+</details>
+        
+<!-- Q9 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Why keep original dimensions but make it look worse?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">Most image compressors and resizers shrink the 
+<strong class="text-zinc-700">pixel dimensions
+</strong> of your image — turning a large photo into a physically smaller one on screen. Our tool takes a different approach: it 
+<strong class="text-zinc-700">keeps the exact same width and height in pixels
+</strong> while applying heavier JPEG compression. This means your image fills the same space on screen but looks softer, blockier, and more artifacted. This is the correct approach for deep fried memes (where large visible pixel blocks are the goal), for government form photos (where specific pixel dimensions are required), and for any scenario where you want the image to look worse without getting smaller.</p>
+        
+</details>
+        
+<!-- Q10 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">What's the difference between reducing quality and reducing resolution?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">Resolution reduction
+</strong> (resizing) changes the number of pixels in your image — for example, shrinking a 4000×3000 photo to 800×600. The image becomes physically smaller on screen and contains less pixel data, which reduces file size but also makes details harder to see. 
+<strong class="text-zinc-700">Quality reduction
+</strong> keeps the exact same pixel count but applies heavier JPEG compression. The image fills the same space on screen but shows more compression artifacts — blocky 8×8 pixel squares, color banding, ringing around edges. Our tool focuses on quality reduction because it produces the characteristic degraded look that resolution reduction cannot: the image stays large but looks terrible. For maximum file size reduction, combine both: use the pixelation slider (which effectively reduces detail) plus a low quality setting.</p>
+        
+</details>
+        
+<!-- Q11 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">How does this compare to other tools?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">Most online low-quality image tools offer 
+<strong class="text-zinc-700">only a single quality slider
+</strong> with no additional controls, presets, or guidance. Here is what sets our tool apart: 
+<strong class="text-zinc-700">Five one-click presets
+</strong> (Light Fry, Classic Deep Fried, Nuked, 2003 Phone, CRT Monitor) that apply carefully tuned combinations of multiple effects. 
+<strong class="text-zinc-700">Target File Size Auto-Match
+</strong> — type any KB target and the tool finds the optimal quality setting via binary search (no other free tool offers this). 
+<strong class="text-zinc-700">Four independent parameter sliders
+</strong> (pixelation, noise, blur, brightness) for precise creative control. 
+<strong class="text-zinc-700">Batch processing
+</strong> with individual download buttons. 
+<strong class="text-zinc-700">100% client-side processing
+</strong> — verified privacy with zero network requests. 
+<strong class="text-zinc-700">100MB file limit
+</strong> (most competitors cap at 5–10MB). 
+<strong class="text-zinc-700">No watermarks
+</strong>, no registration, no usage limits, and completely free with no paid tier.</p>
+        
+</details>
+        
+<!-- Q12 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Can I process multiple images at once?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">Yes.
+</strong> Select multiple files in your file picker dialog (hold Ctrl or Cmd while clicking), or drag and drop a group of images onto the upload zone. All images are processed simultaneously with the 
+<strong class="text-zinc-700">same quality settings, preset, and advanced parameters
+</strong>. The primary preview shows the first image, and a Batch Results panel appears below the controls showing thumbnail cards for each additional image with 
+<strong class="text-zinc-700">individual file size stats and download buttons
+</strong>. There is no limit to how many images you can process, either in a single batch or across sessions. The Download All button triggers sequential downloads for every image in the batch with a 300ms delay between each to avoid browser popup blocking.</p>
+        
+</details>
+        
+<!-- Q13 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">What is the maximum file size I can upload?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">Up to 100MB per file
+</strong> with no practical limits on image dimensions. This is significantly larger than most competing tools, which typically cap at 5–10MB. A 100MB file at modern smartphone resolution (e.g., 12MP or 4000×3000) takes under 200ms to process on current hardware. There is 
+<strong class="text-zinc-700">no limit on the number of files
+</strong> you can process per session or per day — batch upload as many as you want. If you need to process files larger than 100MB, we recommend using desktop image editing software like GIMP or Photoshop for the initial resize, then returning here for the quality degradation pass.</p>
+        
+</details>
+        
+<!-- Q14 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Can I use this tool offline?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">Yes.
+</strong> Because 100% of the image processing runs inside your browser using the Canvas API, you can load the page once (or save it to your device), disconnect from the internet, and continue using every feature: uploading, quality adjustment, preset effects, advanced controls, batch processing, and downloading. The tool is built as static HTML, CSS, and JavaScript with zero server dependencies. For the best offline experience, 
+<strong class="text-zinc-700">save this page to your home screen
+</strong> on mobile (via your browser’s “Add to Home Screen” option) or bookmark it on desktop. The page will load from cache when you are offline and work identically to the online version. This also means the tool works on airplanes, in areas with poor connectivity, and in secure environments where internet access is restricted.</p>
+        
+</details>
+        
+<!-- Q15 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Does the tool support animated GIFs?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+<strong class="text-zinc-700">Yes — with full animation preservation in the preview.
+</strong> When you upload an animated GIF, the tool uses gifuct-js to decompress every frame, then renders them sequentially in the preview panel with the current quality and effect settings applied to each frame in real time. You see the animated result with all effects (pixelation, noise, blur, brightness) applied while the GIF plays. 
+<strong class="text-zinc-700">Note on downloading:
+</strong> the current version outputs individual frames as JPEG for maximum compression. Full animated GIF export with all effects baked in is under development. For now, the preview accurately shows how each frame of your GIF will look with the degradation applied, and you can download any individual frame as a JPEG. This is the only free online image degradation tool that provides animated GIF preview with live effects applied — most either reject GIFs entirely or only process the first frame.</p>
+        
+</details>
+        
+<!-- Q16 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">What output formats can I download?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">Advanced Controls includes a format selector with three output options: 
+<strong class="text-zinc-700">JPEG
+</strong> (default, best for deep fried memes and maximum compression — uses lossy compression to create characteristic artifacts), 
+<strong class="text-zinc-700">PNG
+</strong> (lossless, best for privacy redaction and pixel art where you want clean pixel blocks without additional compression artifacts), and 
+<strong class="text-zinc-700">WebP
+</strong> (modern format offering better compression than JPEG at equivalent quality, but with less pronounced artifacts for the deep fried aesthetic). The quality slider affects JPEG and WebP output directly; PNG output ignores the quality setting since PNG uses lossless compression. 
+<strong class="text-zinc-700">Choose JPEG
+</strong> for memes, Discord compression, and government forms. 
+<strong class="text-zinc-700">Choose PNG
+</strong> for pixelation-based privacy masking and 8-bit art where you want clean, sharp pixel edges. 
+<strong class="text-zinc-700">Choose WebP
+</strong> when you need the smallest possible file size at reasonable quality for web use.</p>
+        
+</details>
+        
+<!-- Q17 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">How does the Target File Size Auto-Match work?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">The Auto-Match feature in Advanced Controls uses a 
+<strong class="text-zinc-700">9-iteration binary search algorithm
+</strong> to find the optimal JPEG quality setting for your target file size. Here is how it works: you enter a target KB value (e.g., 50 for a 50KB limit), click Auto-Match, and the tool starts testing quality levels. It begins at 50%, checks the output size, and then narrows the search range based on whether the result is above or below your target. After 9 iterations it converges on the highest quality setting that produces a file under your target KB. This is much faster than manually adjusting the slider and checking file sizes — a process that would take 20–30 trial-and-error attempts for the same precision. 
+<strong class="text-zinc-700">Important:
+</strong> Auto-Match only adjusts the quality slider; it does not change your pixelation, noise, blur, or brightness settings. If you have aggressive effects enabled (like 8× pixelation), those effects are applied before quality compression, which affects the final file size. For the most accurate targeting, start with effects at their minimum and run Auto-Match, then add creative effects afterward.</p>
+        
+</details>
+        
+<!-- Q18 -->
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Is there a way to undo or reset my changes?</span>
+            
+<svg class="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-400 leading-relaxed">Yes — the 
+<strong class="text-zinc-700">Reset button
+</strong> (next to Download and Copy) clears the current image and resets all parameters to their defaults: quality to 15%, pixelation to 1×, noise to 0%, blur to 0, brightness to 0, and output format to JPEG. This does not undo individual parameter changes incrementally; it performs a full clean-slate reset. 
+<strong class="text-zinc-700">Workflow tip:
+</strong> if you are experimenting with different effect combinations and want to compare them, download each version before changing settings. Since the tool generates new files each time (no overwriting), you can build up a collection of variants on your device and pick your favorite. The live preview always reflects the current slider and preset values, so you can freely explore the parameter space without worrying about permanently ruining anything — just hit Reset and start over.</p>
+        
+</details>
+      
+</div>
+          
+</section>
+    
+<!-- ═══════════ COMPARISON TABLE ═══════════ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-16 md:pb-20">
+      
+<div class="text-center mb-10">
+        
+<span class="sec-label mb-4">Comparison</span>
+        
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mt-3">How we 
+<span class="text-brand-500">compare</span>
+</h2>
+      
+</div>
+      
+<p class="text-sm text-zinc-500 text-center max-w-xl mx-auto mb-10">
+        A side-by-side look at what sets this tool apart from other free online image degraders.      </p>
+      
+<div class="max-w-4xl mx-auto overflow-x-auto">
+        <table class="w-full text-left text-xs md:text-sm">
+          
+<thead>
+            <tr class="border-b border-zinc-200">
+              
+<th class="py-3 px-4 font-medium text-zinc-700">Feature</th>
+              
+<th class="py-3 px-4 text-center font-medium text-brand-400 bg-brand-500/5 rounded-t-xl">This Tool</th>
+              
+<th class="py-3 px-4 text-center font-medium text-zinc-500">Other Free Tools</th>
+            
+</tr>
+          
+</thead>
+          <tbody class="text-zinc-500 [&_tr:nth-child(even)]:bg-zinc-50/70">
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Quality slider with live preview</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">&#10003;</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">&#10003;</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">One-click presets (Meme, CRT, Vintage)</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">
+<strong>5 styles
+</strong>
+</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">None</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Target file size auto-match (binary search)</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">&#10003;</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">&#10007;</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Advanced effects (noise, blur, brightness, pixelation)</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">
+<strong>4 sliders
+</strong>
+</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">0&ndash;2 sliders</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Batch processing (upload multiple files at once)</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">&#10003;</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">&#10007;</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">GIF animation support with live preview</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">&#10003;</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">Rare (1 site)</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Max file size</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<strong class="text-brand-400">100 MB
+</strong>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">5&ndash;10 MB typical</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Output formats</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<strong class="text-brand-400">JPEG + PNG + WebP
+</strong>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">JPEG only (most)</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Processing location</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<strong class="text-brand-400">Browser (100% private)
+</strong>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">Browser (most)</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Sample images to try instantly</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">&#10003;</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">Rare</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Registration required</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<strong class="text-brand-400">None
+</strong>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">Often required</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Mobile responsive / touch optimized</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<span class="text-brand-400 font-bold">&#10003;</span>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">Partial (2-3 sites)</span>
+</td>
+            
+</tr>
+            <tr class="border-b border-zinc-200/30">
+              
+<td class="py-3 px-4">Educational content &amp; guides</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<strong class="text-brand-400">Built into page
+</strong>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">Rare (1 site has blog)</span>
+</td>
+            
+</tr>
+            
+<tr>
+              
+<td class="py-3 px-4">Watermarks</td>
+              
+<td class="py-3 px-4 text-center bg-brand-500/5">
+<strong class="text-brand-400">Never
+</strong>
+</td>
+              
+<td class="py-3 px-4 text-center">
+<span class="text-zinc-400">No (most free tools)</span>
+</td>
+            
+</tr>
+          
+</tbody>
+        
+</table>
+      
+</div>
+      
+<p class="text-center text-xs text-zinc-400 mt-6">
+        Based on publicly available feature lists of free online image degradation tools as of 2026, including lowqualityimage.net, lowqualityimage.com, baixarqualidadeimagem.com.br, minipx.com, and lowqualitymemes.com. Our tool is the only one that combines all five presets, target file size auto-match, batch processing, and full offline capability in a single page — with no registration, no watermarks, and no file size limits below 100MB.        
+<br class="hidden sm:block" />This table is for informational purposes. Individual experiences may vary.      </p>
+    
+</section>
+    
+<!-- ============ FINAL CTA ============ -->
+    
+<section class="section-divide pt-16 md:pt-20 pb-12 md:pb-16">
+      
+<div class="max-w-2xl mx-auto text-center px-4">
+        
+<h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-4">
+          Ready to make your images 
+<span class="text-brand-500">look terrible</span>?        </h2>
+        
+<p class="text-sm text-zinc-500 leading-relaxed mb-8 max-w-lg mx-auto">
+          No signup. No watermarks. No server uploads. Just drag an image into the upload zone above and start degrading. Everything happens in your browser — your files never leave your device.        </p>
+        
+<div class="flex flex-wrap justify-center gap-3">
+          
+<a href="#tool-root" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-500 text-white font-medium text-sm hover:bg-brand-600 active:scale-[0.98] transition-all no-underline">
+            
+<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+</svg>
+            Go to the tool          </a>
+          
+<a href="#faq" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-300 text-zinc-700 font-medium text-sm hover:border-zinc-400 hover:text-zinc-900 transition-all no-underline">
+            Read the FAQ          </a>
+        
+</div>
+      
+</div>
+    
+</section>
+  
+</main>
+  <!-- ============ PRIVACY NOTICE ============ -->
+  <section class="section-divide pt-16 md:pt-20 pb-8 md:pb-10">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-lg font-semibold text-zinc-900 mb-3">Privacy &amp; Trust</h2>
+      <p class="text-xs text-zinc-400 leading-relaxed">
+        All image processing runs in your browser via the Canvas API. <strong class="text-zinc-700">No files are ever uploaded to any server.</strong>
+        We do not use cookies, analytics, or any form of data collection. You can disconnect your internet and the tool still works.
+        No watermarks, no registration, no limits. <strong class="text-zinc-700">100% free, 100% private, forever.</strong>
+      </p>
+      <p class="text-[10px] text-zinc-400 mt-3 font-mono">Client-side processing &middot; No data collection &middot; No cookies &middot; No server uploads</p>
+    </div>
+  </section>
+
+  <!-- FAQPage Schema (enhanced, 10 items) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {'@type': 'Question', 'name': 'How do I make an image lower quality online?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Drag and drop any image into the upload zone. Use the quality slider to set your desired degradation level. Optionally click a preset like Nuked or CRT Monitor. Open Advanced Controls for fine-grained adjustments to pixelation, noise, blur, and brightness. Click Download when satisfied. All processing runs in your browser.'}},
+      {'@type': 'Question', 'name': 'Is this tool safe and private?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. All image processing runs entirely inside your browser using the HTML5 Canvas API. Your files are never transmitted to any remote server. You can verify this by opening your browser Developer Tools Network tab. You can even disconnect your internet and the tool continues to work. We do not use cookies, analytics, or any data collection.'}},
+      {'@type': 'Question', 'name': 'What image formats are supported?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Input formats: JPEG, PNG, WebP, GIF, and BMP up to 100MB per file. Output formats: JPEG (best for deep fried effects and compression), PNG (lossless, preserves transparency), or WebP (modern balance of quality and size).'}},
+      {'@type': 'Question', 'name': 'Can I make deep fried memes with this?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. The Nuked preset applies 8x pixelation, 35% noise, over-brightening, and 10% JPEG quality for the maximum deep fried look. Classic Deep Fried uses 2x pixelation and 15% noise at 20% quality. Each preset updates the Advanced Controls sliders so you can tweak further.'}},
+      {'@type': 'Question', 'name': 'How much can I reduce the file size?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'You can reduce image quality down to 1%, often reducing file size by over 95% while keeping the same pixel dimensions. For precise targeting, use Target File Size Auto-Match which runs a 9-iteration binary search to find the optimal quality setting under your KB target.'}},
+      {'@type': 'Question', 'name': 'Does it work on iPhone and Android?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Fully responsive and works in all modern mobile browsers including Safari on iOS and Chrome on Android. No app download required. All processing happens on-device using your phone GPU-accelerated browser engine.'}},
+      {'@type': 'Question', 'name': 'Is this really free?', 'acceptedAnswer': {'@type': 'Answer', 'text': '100% free with no strings attached. No daily usage limits, no watermarks, no forced registration, and no premium tier. Process as many images as you want, every day, forever. The tool operates entirely in your browser which means minimal hosting costs.'}},
+      {'@type': 'Question', 'name': 'Why do people intentionally make images low quality?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'It serves several purposes: deep fried memes for internet culture and humor on Reddit and Discord, practical file compression for platform limits, privacy and censorship via pixelation, and aesthetic nostalgia with CRT scan lines and VHS effects.'}},
+      {'@type': 'Question', 'name': 'What is the difference between reducing quality and reducing resolution?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Resolution reduction shrinks pixel dimensions making the image physically smaller. Quality reduction keeps the exact same width and height in pixels while applying heavier JPEG compression. Your image fills the same space but looks softer and more artifacted.'}},
+      {'@type': 'Question', 'name': 'Does the tool add watermarks?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'No. Downloaded images contain no watermarks, branding, or hidden metadata. You get exactly the degraded image you see in the preview with no modifications.'}}
+    ]
+  })} />
+
+  
+<!-- ═══════════ FOOTER ═══════════ -->
+  
+<footer class="section-divide py-8">
+    
+<div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      
+<p class="text-xs text-zinc-400"><span>&copy; 2026 Low Quality Image Maker</span><span class="mx-1.5 text-zinc-300">&middot;</span><span>Built by <span class="text-zinc-500">Jiusong</span> &middot; Last updated Aug 12, 2026</span></p>
+      
+<div class="flex gap-6 text-xs text-zinc-400">
+        
+<a href="#faq" class="hover:text-zinc-500 transition-colors">FAQ</a>
+        
+<a href="#tool-root" class="hover:text-zinc-500 transition-colors">Try the Tool</a>
+      
+</div>
+    
+</div>
+  
+</footer>
+</BaseLayout>
