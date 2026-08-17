@@ -18,7 +18,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 <a href="/" class="text-sm font-semibold tracking-tight text-zinc-800 hover:text-zinc-900 transition-colors">
         Low Quality Image Maker      </a>
       
-<span class="text-xs text-zinc-400 font-mono uppercase tracking-wider">Free &middot; Private</span>
+<span class="text-xs text-zinc-400 font-mono uppercase tracking-wider boot-line">Free &middot; Private</span>
     
 </div>
   
@@ -260,8 +260,6 @@ const description = 'Make images low quality instantly in your browser. Deep fry
             
 <h3 class="text-lg font-semibold text-zinc-900 mb-2">Deep Fried Memes</h3>
             
-<p class="text-sm text-zinc-400 leading-relaxed max-w-md">
-              
 <p class="text-sm text-zinc-400 leading-relaxed max-w-md">Create crispy, artifact-ridden memes for Reddit's r/DeepFriedMemes (500,000+ members), Discord meme channels, Twitter, and Instagram. The deep fried aesthetic originated on Tumblr around 2014—users discovered that repeatedly screenshotting, re-uploading, and compressing an image created a uniquely grotesque visual language. Our tool replicates that entire degradation pipeline in a single click. 
 <strong class="text-zinc-700">The Nuked preset
 </strong> delivers the authentic “screenshotted 40 times” look with 8× pixelation, 35% noise, extreme brightness (+20), and aggressive JPEG compression at 10% quality—this is the setting used by r/DeepFriedMemes power users. 
@@ -271,7 +269,6 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 </strong>. 
 <strong class="text-zinc-700">Pro tip:
 </strong> combine the Nuked preset with the CRT Monitor preset afterward for a truly cursed result, or layer the 2003 Phone preset on top of Classic for a nostalgic deep fried look. The output format defaults to JPEG because JPEG's lossy compression algorithm creates the characteristic 8×8 blocking artifacts that define the deep fried aesthetic—PNG's lossless compression would defeat the purpose.</p>
-            </p>
             
 <p class="text-xs text-zinc-400 mt-2 font-mono">Target: 30&ndash;100KB &middot; JPEG recommended</p>
           
@@ -291,8 +288,6 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <h3 class="text-base font-semibold text-zinc-900 mb-2">Discord & Forum Limits</h3>
           
-<p class="text-sm text-zinc-400 leading-relaxed">
-            
 <p class="text-sm text-zinc-400 leading-relaxed">Bypass Discord's 8MB free-tier upload cap, forum attachment restrictions, and messaging app file size limits without shrinking your image dimensions. 
 <strong class="text-zinc-700">How it works:
 </strong> open Advanced Controls, type your target KB in the Target File Size field, and hit Auto-Match. The tool runs a 9-iteration binary search across all 100 quality levels to find the optimal JPEG compression setting that keeps you under the limit while preserving the best possible visual quality. This is fundamentally different from resizing—your image keeps its full pixel dimensions and looks the same size on screen, but the file size drops dramatically. 
@@ -300,7 +295,6 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 </strong> Discord free tier: 8MB (Nitro Basic: 50MB, Nitro: 500MB). Slack: 10MB per file. Telegram: 2GB (but compresses photos automatically). WhatsApp: 16MB for media. Most online forums: 500KB–2MB per attachment. Reddit: 20MB for direct image uploads. Twitter/X: 5MB for photos. 
 <strong class="text-zinc-700">Real example:
 </strong> a 12MB DSLR photo of your gaming setup gets rejected by Discord's free tier. Upload it here, enter 7000 (7MB to leave headroom) in Target File Size, click Auto-Match, and the tool finds quality ~55%—keeping your photo at full 4000×3000 resolution while fitting comfortably under Discord's limit. No watermark, no registration, and the processed image never left your browser.</p>
-          </p>
           
 <p class="text-xs text-zinc-400 mt-3 font-mono">Target: under 100KB</p>
         
@@ -312,8 +306,6 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <h3 class="text-base font-semibold text-zinc-900 mb-2">Government & Exam Portals</h3>
           
-<p class="text-sm text-zinc-400 leading-relaxed">
-            
 <p class="text-sm text-zinc-400 leading-relaxed">Passport applications, visa photos, UPSC, SSC, IBPS, banking exams, driving license renewals, and other government portal uploads often impose 
 <strong class="text-zinc-700">strict dual requirements: specific pixel dimensions AND a maximum file size of 20–50KB
 </strong>. These two constraints are naturally in tension—keeping a photo at 300×400 pixels while squeezing it under 50KB requires aggressive JPEG compression without any resizing. 
@@ -321,7 +313,6 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 </strong> Here is the workflow: keep your photo at the exact pixel dimensions required by the form (do not resize), upload it, type your KB limit in the Target File Size field (e.g., 50 for a 50KB cap), and click Auto-Match. The tool performs a binary search across 9 quality levels—testing 50%, 25%, 12%, 6%, 3%, and so on—to find the highest quality setting that produces a file under your target. This is vastly superior to the trial-and-error approach of manually adjusting a slider, saving a file, checking its size, and repeating. 
 <strong class="text-zinc-700">Common exam photo requirements:
 </strong> UPSC Civil Services: 20–50KB, 3.5cm×4.5cm at 350×450px. SSC CGL: 20–50KB. IBPS: 20–50KB. NEET: 10–200KB. US passport: under 240KB at 600×600px. Indian passport: 10–20KB at 200×300px. UK passport: under 6MB. All processing runs locally in your browser, so sensitive ID documents and passport photos never touch a remote server—critical for identity documents governed by data protection laws. Output in JPEG format for maximum compression; if your form requires PNG, switch the format selector in Advanced Controls, though note that PNG files will be larger at the same visual quality.</p>
-          </p>
           
 <p class="text-xs text-zinc-400 mt-3 font-mono">Target: under 50KB</p>
         
@@ -342,15 +333,12 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 <h3 class="text-lg font-semibold text-zinc-900 mb-2">Retro & Vintage Aesthetics</h3>
             
 <p class="text-sm text-zinc-400 leading-relaxed max-w-md">
-              
-<p class="text-sm text-zinc-400 leading-relaxed max-w-md">
 <strong class="text-zinc-700">The CRT Monitor preset
 </strong> layers horizontal scan lines every 3 pixels (simulating a 240-line CRT phosphor mask) with subtle RGB noise (8%) and a dimming overlay (−10 brightness) for an authentic late-1990s CRT computer monitor look. This effect is widely used in vaporwave and synthwave album art, retro gaming content, cyberpunk visual design, and nostalgia-driven brand identities. 
 <strong class="text-zinc-700">The 2003 Phone preset
 </strong> recreates early cameraphone photography with 6× pixelation, 20% noise, a cool blue tint applied via brightness shift, and chunky compression at 20% quality (<a href="https://en.wikipedia.org/wiki/JPEG" rel="nofollow noopener" target="_blank" class="text-brand-500 hover:text-brand-400 underline underline-offset-2">JPEG</a>)—think Motorola RAZR V3 (0.3MP sensor), Nokia 6600 (VGA resolution), or Sony Ericsson T610. The resulting images have the characteristic low dynamic range, crushed shadows, and color cast of early-2000s mobile phone cameras, which shot at resolutions around 640×480 with tiny sensors that produced significant noise in anything but direct sunlight. 
 <strong class="text-zinc-700">Beyond presets: creating custom retro looks.
 </strong> Open Advanced Controls and combine the four independent sliders to build your own vintage aesthetic. For a VHS tape effect: set pixelation to 3×, noise to 25%, blur to 3, and brightness to +5. For degraded film stock: pixelation 1×, noise 40%, blur 8, brightness −10. For early YouTube compression (2006 era): quality 15%, pixelation 1×, noise 5%, blur 1. The presets are starting points; the real creative control comes from exploring the parameter space yourself. These effects are used by musicians for lo-fi album covers, by designers for retro-themed social media campaigns, by filmmakers for period-accurate video inserts, and by artists exploring the aesthetic of digital decay as a creative medium. Download in JPEG for maximum period accuracy (matching the formats those original devices produced) or PNG if you need lossless preservation of your custom effect.</p>
-            </p>
             
 <p class="text-xs text-zinc-400 mt-2 font-mono">Presets: CRT Monitor &middot; 2003 Phone</p>
           
@@ -1917,7 +1905,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
     </div>
   </section>
 
-  <!-- FAQPage Schema (enhanced, 10 items) -->
+  <!-- FAQPage Schema (enhanced, 18 items matching visible FAQ) -->
   <script type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -1931,7 +1919,15 @@ const description = 'Make images low quality instantly in your browser. Deep fry
       {'@type': 'Question', 'name': 'Is this really free?', 'acceptedAnswer': {'@type': 'Answer', 'text': '100% free with no strings attached. No daily usage limits, no watermarks, no forced registration, and no premium tier. Process as many images as you want, every day, forever. The tool operates entirely in your browser which means minimal hosting costs.'}},
       {'@type': 'Question', 'name': 'Why do people intentionally make images low quality?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'It serves several purposes: deep fried memes for internet culture and humor on Reddit and Discord, practical file compression for platform limits, privacy and censorship via pixelation, and aesthetic nostalgia with CRT scan lines and VHS effects.'}},
       {'@type': 'Question', 'name': 'What is the difference between reducing quality and reducing resolution?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Resolution reduction shrinks pixel dimensions making the image physically smaller. Quality reduction keeps the exact same width and height in pixels while applying heavier JPEG compression. Your image fills the same space but looks softer and more artifacted.'}},
-      {'@type': 'Question', 'name': 'Does the tool add watermarks?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'No. Downloaded images contain no watermarks, branding, or hidden metadata. You get exactly the degraded image you see in the preview with no modifications.'}}
+      {'@type': 'Question', 'name': 'Does the tool add watermarks?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'No. Downloaded images contain no watermarks, branding, or hidden metadata. You get exactly the degraded image you see in the preview with no modifications.'}},
+      {'@type': 'Question', 'name': 'Why keep original dimensions but make it look worse?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Most compressors shrink the pixel dimensions of your image. Our tool keeps the exact same width and height while applying heavier JPEG compression, so the image fills the same space on screen but looks softer and more artifacted. This is the right approach for deep fried memes and government form photos.'}},
+      {'@type': 'Question', 'name': 'How does this compare to other tools?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Most online low quality tools offer only a single quality slider. This tool adds five one-click presets, Target File Size Auto-Match via binary search, four independent parameter sliders, batch processing, 100% client-side processing, 100MB file limit, and no watermarks or registration.'}},
+      {'@type': 'Question', 'name': 'Can I process multiple images at once?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Select multiple files or drag a group onto the upload zone. All images are processed with the same settings, and a Batch Results panel shows thumbnail cards with individual size stats and download buttons. There is no limit on how many images you can process.'}},
+      {'@type': 'Question', 'name': 'What is the maximum file size I can upload?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Up to 100MB per file with no practical limit on image dimensions. This is significantly larger than most competing tools which typically cap at 5-10MB. There is no limit on the number of files you can process.'}},
+      {'@type': 'Question', 'name': 'Can I use this tool offline?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Because 100% of the processing runs in your browser, you can load the page once, disconnect from the internet, and continue using every feature. The tool is built as static HTML, CSS, and JavaScript with zero server dependencies.'}},
+      {'@type': 'Question', 'name': 'Does the tool support animated GIFs?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes, with full animation preservation in the preview. Animated GIF frames are decompressed and rendered with the current effects applied in real time. The current version outputs individual frames as JPEG; full animated GIF export is under development.'}},
+      {'@type': 'Question', 'name': 'How does the Target File Size Auto-Match work?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'It runs a 9-iteration binary search across quality levels 1-100 to find the highest quality setting that produces a file under your target KB. Auto-Match only adjusts the quality slider; it does not change your pixelation, noise, blur, or brightness settings.'}},
+      {'@type': 'Question', 'name': 'Is there a way to undo or reset my changes?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. The Reset button clears the current image and resets all parameters to defaults: quality 15%, pixelation 1x, noise 0%, blur 0, brightness 0, and JPEG output. It performs a full clean-slate reset rather than incremental undo.'}},
     ]
   })} />
 

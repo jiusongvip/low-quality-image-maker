@@ -27,17 +27,20 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, '');
   <meta property="og:image" content="https://low-quality-image-maker.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="Low Quality Image Maker — free online tool to degrade, compress, and deep fry images" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://low-quality-image-maker.com/og-image.png" />
   <!-- Additional SEO -->
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#18181b" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
 
-  <!-- gifuct-js for GIF frame parsing -->
-  <script is:inline src="https://unpkg.com/gifuct-js@2.1.2/dist/gifuct-js.umd.js" defer></script>
+  <!-- gifuct-js for GIF frame parsing (vendored locally for zero external requests) -->
+  <script is:inline src="/vendor/gifuct-js.umd.js" defer></script>
 
   <!-- Schema: WebApplication + Organization -->
   <script type="application/ld+json" set:html={JSON.stringify({

@@ -90,6 +90,18 @@
   }
   .faq-answer.open { grid-template-rows: 1fr; }
   .faq-answer > div { overflow: hidden; }
+
+  /* Terminal boot line in nav */
+  .boot-line::before {
+    content: "$ ";
+    @apply text-brand-500 font-semibold;
+  }
+
+  /* Hardware-feel button press */
+  .btn-hard:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.18);
+  }
 }
 
 @layer utilities {
