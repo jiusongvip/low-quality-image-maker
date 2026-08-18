@@ -27,36 +27,98 @@ const description = 'Make images low quality instantly in your browser. Deep fry
     
 <!-- ═══════════ HERO ═══════════ -->
     
-<section class="pt-16 pb-10 md:pt-20 md:pb-12 text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-zinc-900 leading-[1.05] text-balance">
-        Low Quality 
+<section class="pt-10 pb-12 md:pt-14 md:pb-16">
+      <!-- Full-width Before/After compare slider -->
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div id="hero-compare" class="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-zinc-200 bg-surface-raised shadow-sm select-none cursor-ew-resize">
+          <img src="/img/hero-before.jpg" alt="Original photo before degradation" class="absolute inset-0 w-full h-full object-cover" width="800" height="800" fetchpriority="high" decoding="async" />
+          <div id="hero-after-clip" class="absolute inset-0" style="clip-path: inset(0 0 0 50%);">
+            <img src="/img/hero-after.jpg" alt="Same photo after the Nuked deep fry preset" class="absolute inset-0 w-full h-full object-cover" width="800" height="800" fetchpriority="high" decoding="async" />
+          </div>
+          <!-- divider line -->
+          <div id="hero-divider" class="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white/90 shadow-[0_0_12px_rgba(0,0,0,0.4)] z-10"></div>
+          <!-- grip -->
+          <div id="hero-grip" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/95 border border-zinc-200 shadow-lg flex items-center justify-center z-20">
+            <svg class="w-5 h-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5 4.5 12l3.75 4.5m7.5-9 3.75 4.5-3.75 4.5"/></svg>
+          </div>
+          <!-- labels -->
+          <span class="absolute top-4 left-4 z-20 px-2.5 py-1 rounded-md bg-zinc-900/70 backdrop-blur text-[11px] font-mono uppercase tracking-wider text-zinc-100">Before</span>
+          <span class="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-md bg-brand-500/90 backdrop-blur text-[11px] font-mono uppercase tracking-wider text-white">Nuked Preset</span>
+          <!-- caption -->
+          <div class="absolute bottom-0 inset-x-0 z-10 px-4 py-3 bg-gradient-to-t from-black/60 to-transparent">
+            <p class="text-xs text-white/90 font-medium">Deep fried with one click</p>
+            <p class="text-[11px] text-white/70 font-mono">149 KB &rarr; 38 KB &middot; drag to compare</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center pt-10 md:pt-12">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-zinc-900 leading-[1.05] text-balance">
+            Low Quality 
 <span class="text-brand-500">Image Maker</span>
-      </h1>
-      
+          </h1>
+          
 <p class="mt-4 max-w-2xl mx-auto text-base text-zinc-400 leading-relaxed text-balance">
-        
+            
 <strong class="text-zinc-800">Intentionally degrade, compress, pixelate, and deep fry any image
 </strong> — right in your browser.        Create crusty deep fried memes for Reddit and Discord, compress high-res photos under strict file size limits for government forms and email attachments,        pixelate sensitive information for privacy, or add CRT scan lines and vintage noise for that early-internet aesthetic.        Supports JPEG, PNG, WebP, GIF, and BMP files up to 100MB. 
 <strong class="text-zinc-800">100% client-side processing
 </strong> — your images never leave your device.        No uploads, no servers, no watermarks, no signup. Completely free, unlimited, and private.      </p>
-      
+          
+<div class="mt-6 flex flex-wrap justify-center gap-3">
+            <a href="#tool-root" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-500 text-white font-medium text-sm hover:bg-brand-600 active:scale-[0.98] transition-all no-underline btn-hard">
+              Try it now &rarr;
+            </a>
+            <a href="#faq" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-300 text-zinc-700 font-medium text-sm hover:border-zinc-400 hover:text-zinc-900 transition-all no-underline">
+              Read the FAQ
+            </a>
+          </div>
+          
 <div class="mt-5 flex flex-wrap justify-center gap-2">
-        
+            
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
 <span class="text-brand-500 font-bold">&infin;</span> Free Forever</span>
-        
+            
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
 <span class="text-brand-500">&#10003;</span> No Watermark</span>
-        
+            
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
 <span class="text-brand-500">&#8593;</span> Up to 100MB</span>
-        
+            
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100/50 text-xs text-zinc-500">
 <span class="text-brand-500">&#128274;</span> 100% Private</span>
-      
+          
 </div>
+        </div>
+      </div>
     
 </section>
+
+<script is:inline>
+  (function() {
+    var wrap = document.getElementById('hero-compare');
+    if (!wrap) return;
+    var clip = document.getElementById('hero-after-clip');
+    var divider = document.getElementById('hero-divider');
+    var grip = document.getElementById('hero-grip');
+    function setPos(x) {
+      var r = wrap.getBoundingClientRect();
+      var pct = Math.min(100, Math.max(0, ((x - r.left) / r.width) * 100));
+      clip.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+      divider.style.left = pct + '%';
+      grip.style.left = pct + '%';
+    }
+    function onMove(e) {
+      var clientX = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+      setPos(clientX);
+    }
+    function onDown(e) { e.preventDefault(); onMove(e); document.addEventListener('mousemove', onMove); document.addEventListener('touchmove', onMove); document.addEventListener('mouseup', onUp); document.addEventListener('touchend', onUp); }
+    function onUp() { document.removeEventListener('mousemove', onMove); document.removeEventListener('touchmove', onMove); document.removeEventListener('mouseup', onUp); document.removeEventListener('touchend', onUp); }
+    wrap.addEventListener('mousedown', onDown);
+    wrap.addEventListener('touchstart', onDown, { passive: false });
+  })();
+</script>
         
 <!-- ============ QUICK ACTIONS ============ -->
     
