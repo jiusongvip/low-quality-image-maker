@@ -4,7 +4,7 @@
 - Free online tool to degrade, compress, pixelate, and deep fry images
 - 100% client-side processing — images never leave the device
 - Supports JPEG, PNG, WebP, GIF, BMP up to 100MB
-- URL: https://low-quality-image-maker.com
+- URL: https://www.low-quality-image-maker.com
 
 ## What It Does
 Intentionally degrades image quality via: JPEG quality compression (1-100%), pixelation (1x-20x), noise overlay, blur, brightness shift, and preset effects (Nuked, Classic Deep Fried, Light Fry, CRT Monitor, 2003 Phone). Includes target file size auto-match for government forms, Discord uploads, and email attachments.
