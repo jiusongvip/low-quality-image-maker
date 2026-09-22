@@ -10,7 +10,12 @@
 Intentionally degrades image quality via: JPEG quality compression (1-100%), pixelation (1x-20x), noise overlay, blur, brightness shift, and preset effects (Nuked, Classic Deep Fried, Light Fry, CRT Monitor, 2003 Phone). Includes target file size auto-match for government forms, Discord uploads, and email attachments.
 
 ## Key Pages
-- Home (tool): https://low-quality-image-maker.com/
+- [Home (tool)](https://www.low-quality-image-maker.com) — the image degradation editor, runs fully in the browser
+- [Try the tool](https://www.low-quality-image-maker.com#tool-root) — upload, adjust and download section
+- [FAQ](https://www.low-quality-image-maker.com#faq) — common questions about degrading images
+- [AI catalog (ARD)](https://www.low-quality-image-maker.com/ai-catalog.json) — machine-readable resource manifest
+- [Open Graph preview image](https://www.low-quality-image-maker.com/og-image.png)
+- [XML sitemap](https://www.low-quality-image-maker.com/sitemap.xml)
 
 ## Presets
 | Preset | Quality | Pixelation | Noise | Brightness | Use Case |

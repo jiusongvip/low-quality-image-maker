@@ -27,6 +27,7 @@ const pageUrl = Astro.url.pathname === '/'
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={pageUrl} />
+  <link rel="preload" as="image" imageSizes="(min-width: 768px) 66vw, 100vw" imagesrcset="/img/hero-before-400.webp 400w, /img/hero-before.webp 800w" fetchpriority="high" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- Open Graph -->
   <meta property="og:title" content={title} />

@@ -1,0 +1,22 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Low Quality Image Maker",
+    "documentationUrl": "https://www.low-quality-image-maker.com/llms.txt"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:low-quality-image-maker.com:tools:image-degrader",
+      "displayName": "Low Quality Image Maker",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://www.low-quality-image-maker.com/llms.txt",
+      "description": "Free browser-based tool to intentionally degrade images: deep fry memes, compress to a target file size, pixelate, add CRT/vintage effects. 100% client-side, no uploads.",
+      "representativeQueries": [
+        "free online tool to make an image low quality",
+        "deep fry a meme in the browser",
+        "compress an image to a target file size like 20KB",
+        "add pixelation and CRT retro effects to a photo"
+      ]
+    }
+  ]
+}

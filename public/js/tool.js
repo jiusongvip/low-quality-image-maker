@@ -52,7 +52,7 @@
 
   // ── Show state ──
   function enableControls() {
-    controls.classList.remove('opacity-40', 'pointer-events-none');
+    controls.classList.remove('pointer-events-none');
     downloadBtn.disabled = false;
     copyBtn.disabled = false;
   }
@@ -708,7 +708,7 @@
     targetSizeClear.classList.add('hidden');
     targetSizeInput.value = '';
 
-    controls.classList.add('opacity-40', 'pointer-events-none');
+    controls.classList.add('pointer-events-none');
     downloadBtn.disabled = true;
     copyBtn.disabled = true;
     downloadBtn.textContent = 'Download';
