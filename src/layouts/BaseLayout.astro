@@ -66,6 +66,23 @@ const pageUrl = Astro.url.pathname === '/'
         operatingSystem: ['Windows', 'macOS', 'Linux', 'iOS', 'Android'],
         datePublished: '2026-08-01',
         dateModified: '2026-08-12',
+        author: {
+          '@type': 'Person',
+          name: 'Jiusong',
+          jobTitle: 'Frontend Developer',
+          url: 'https://www.low-quality-image-maker.com/about/',
+          sameAs: ['https://github.com/jiusong'],
+        },
+        creator: {
+          '@type': 'Organization',
+          name: 'Low Quality Image Maker',
+          url: 'https://www.low-quality-image-maker.com',
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'customer support',
+            email: 'hello@low-quality-image-maker.com',
+          },
+        },
         offers: { '@type': 'Offer', price: '0' },
         featureList: [
           'Real-time quality slider with live file-size preview',

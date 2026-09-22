@@ -1,0 +1,42 @@
+---
+// Privacy Policy — truthful disclosure (no image uploads; GA + CF Insights)
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Privacy Policy — Low Quality Image Maker';
+const description = 'How Low Quality Image Maker handles your data: images are processed entirely in your browser and never uploaded, plus full disclosure of the analytics we use.';
+---
+<BaseLayout {title} {description}>
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="https://www.low-quality-image-maker.com" class="text-sm font-semibold tracking-tight text-zinc-800 hover:text-zinc-900 transition-colors">← Back to the image maker</a>
+      <span class="text-xs text-zinc-600 font-mono uppercase tracking-wider">Privacy</span>
+    </div>
+  </nav>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tighter text-zinc-900">Privacy <span class="text-brand-700">Policy</span></h1>
+    <p class="mt-3 text-sm text-zinc-600">Last updated: September 22, 2026</p>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight text-zinc-900">Your images never leave your device</h2>
+    <p class="mt-3 text-zinc-600 leading-relaxed">
+      All image processing happens locally in your browser using the HTML5 Canvas API. When you drop a file into the tool,
+      it is read with the browser-native FileReader API and converted with <code class="text-sm text-zinc-800">canvas.toBlob()</code> —
+      no image bytes, filenames, or metadata are ever transmitted to our servers, because there is no server component that accepts them.
+      You can verify this by opening your browser's Network tab while processing an image.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight text-zinc-900">Analytics we collect</h2>
+    <p class="mt-3 text-zinc-600 leading-relaxed">
+      To understand which features people use, this site runs two privacy-limited analytics services:
+      <strong class="text-zinc-800">Google Analytics</strong> (measurement ID G-PFV7G4GX4L), which collects anonymized page-view and referral information, and
+      <strong class="text-zinc-800">Cloudflare Web Analytics</strong>, which measures traffic without cookies or browser fingerprinting.
+      We do not sell, share, or rent any data to third parties. There are no advertising trackers and no email collection on this site.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight text-zinc-900">Cookies, storage, and children</h2>
+    <p class="mt-3 text-zinc-600 leading-relaxed">
+      Google Analytics may set a cookie (<code class="text-sm text-zinc-800">_ga</code>) to distinguish returning visitors; you can block it via your browser settings.
+      The tool itself stores nothing — no localStorage, no IndexedDB, no service worker cache of your files.
+      The site is directed at a general audience, collects no personal information from children, and is not intended to require consent under GDPR beyond the analytics cookie noted above.
+      Questions about this policy: email <a href="mailto:hello@low-quality-image-maker.com" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">hello@low-quality-image-maker.com</a> or see the <a href="/about/" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">About page</a>.
+    </p>
+  </main>
+</BaseLayout>

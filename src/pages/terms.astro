@@ -1,0 +1,41 @@
+---
+// Terms of Use — usage rights & disclaimer
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Terms of Use & Disclaimer — Low Quality Image Maker';
+const description = 'The terms of use for Low Quality Image Maker: the tool is free for personal and commercial projects, comes with no warranty, and your files stay your property.';
+---
+<BaseLayout {title} {description}>
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="https://www.low-quality-image-maker.com" class="text-sm font-semibold tracking-tight text-zinc-800 hover:text-zinc-900 transition-colors">← Back to the image maker</a>
+      <span class="text-xs text-zinc-600 font-mono uppercase tracking-wider">Terms</span>
+    </div>
+  </nav>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tighter text-zinc-900">Terms of <span class="text-brand-700">Use</span></h1>
+    <p class="mt-3 text-sm text-zinc-600">Last updated: September 22, 2026</p>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight text-zinc-900">You own everything you make</h2>
+    <p class="mt-3 text-zinc-600 leading-relaxed">
+      Every image processed by this tool stays your property. Because processing runs entirely in your browser, we never receive, view, or store your files or their outputs.
+      You may use the tool and its output for personal and commercial projects — memes, form photos, mockups, editorial illustrations — with no attribution required and no license fees.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight text-zinc-900">Acceptable use</h2>
+    <p class="mt-3 text-zinc-600 leading-relaxed">
+      The tool is provided for legitimate image degradation, compression, and stylization.
+      Do not use it to fabricate deceptive evidence, forge documents, or misrepresent edited imagery as authentic photographs.
+      If you degrade a photo of an identifiable person, you are responsible for having the rights to process and publish it.
+      We are not able and not obliged to police how a client-side tool is used on your device.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight text-zinc-900">No warranty &amp; liability</h2>
+    <p class="mt-3 text-zinc-600 leading-relaxed">
+      This service is provided "as is", without warranty of any kind, express or implied, including fitness for a particular purpose.
+      Image quality results depend on your browser, device, and input files; always keep a backup of originals before batch processing.
+      We may change, pause, or discontinue any feature at any time. To the maximum extent permitted by law, the operator of this site is not liable for damages arising from the use of the tool.
+      Questions about these terms: <a href="mailto:hello@low-quality-image-maker.com" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">hello@low-quality-image-maker.com</a>.
+      See also the <a href="/privacy/" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">Privacy Policy</a> and the <a href="/about/" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">About page</a>.
+    </p>
+  </main>
+</BaseLayout>

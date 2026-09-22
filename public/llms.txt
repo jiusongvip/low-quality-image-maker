@@ -13,6 +13,9 @@ Intentionally degrades image quality via: JPEG quality compression (1-100%), pix
 - [Home (tool)](https://www.low-quality-image-maker.com) — the image degradation editor, runs fully in the browser
 - [Try the tool](https://www.low-quality-image-maker.com#tool-root) — upload, adjust and download section
 - [FAQ](https://www.low-quality-image-maker.com#faq) — common questions about degrading images
+- [About](https://www.low-quality-image-maker.com/about/) — who builds and maintains the tool, contact info
+- [Privacy Policy](https://www.low-quality-image-maker.com/privacy/) — data handling and analytics disclosure
+- [Terms of Use](https://www.low-quality-image-maker.com/terms/) — usage rights and disclaimer
 - [AI catalog (ARD)](https://www.low-quality-image-maker.com/ai-catalog.json) — machine-readable resource manifest
 - [Open Graph preview image](https://www.low-quality-image-maker.com/og-image.png)
 - [XML sitemap](https://www.low-quality-image-maker.com/sitemap.xml)
