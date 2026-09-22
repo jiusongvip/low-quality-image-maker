@@ -14,13 +14,21 @@ const pageUrl = Astro.url.pathname === '/'
 <!DOCTYPE html>
 <html lang="en" class="bg-surface">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-PFV7G4GX4L"></script>
+  <!-- Google tag (gtag.js) — injected after load to keep it off the render critical path -->
   <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PFV7G4GX4L');
+    addEventListener('load', function () {
+      setTimeout(function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-PFV7G4GX4L');
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PFV7G4GX4L';
+        document.head.appendChild(s);
+      }, 0);
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -8,5 +8,6 @@ export default defineConfig({
   integrations: [tailwind(), sitemap()],
   build: {
     format: 'directory',
+    inlineStylesheets: 'always',
   },
 });
