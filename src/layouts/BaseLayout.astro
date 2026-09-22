@@ -14,10 +14,13 @@ const pageUrl = Astro.url.pathname === '/'
 <!DOCTYPE html>
 <html lang="en" class="bg-surface">
 <head>
-  <!-- Google tag (gtag.js) — injected after load to keep it off the render critical path -->
+  <!-- Google tag (gtag.js) — injected on first interaction (5s fallback) to keep it off the render path -->
   <script is:inline>
-    addEventListener('load', function () {
-      setTimeout(function () {
+    (function () {
+      var fired = false;
+      function inject() {
+        if (fired) return;
+        fired = true;
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         window.gtag = gtag;
@@ -27,8 +30,11 @@ const pageUrl = Astro.url.pathname === '/'
         s.async = true;
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PFV7G4GX4L';
         document.head.appendChild(s);
-      }, 0);
-    });
+      }
+      addEventListener('pointerdown', inject, { once: true, capture: true });
+      addEventListener('keydown', inject, { once: true, capture: true });
+      setTimeout(inject, 5000);
+    })();
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
