@@ -243,7 +243,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <p class="text-xs text-zinc-600 leading-relaxed">
 <strong class="text-zinc-600">Zero bytes of your data ever leave your device.
-</strong> While cloud-based tools silently upload your photos to remote servers for processing, our entire degradation engine runs inside your browser using the HTML5 Canvas API, FileReader, and toBlob— all standard browser APIs that execute locally. You can verify this yourself: open your browser's Network tab while using the tool and you will see exactly zero outbound requests during image processing. Disconnect from the internet entirely and every feature still works— uploading, previewing, preset effects, advanced controls, downloading, even batch processing. This architecture makes our tool the safest choice for sensitive content: passport photos, ID card scans, medical document screenshots, private family photos, and confidential work materials. No servers means no data breaches, no subpoenable records, and no privacy policy that changes tomorrow. The tool's static HTML site works offline as a Progressive Web App, so you can even save it to your home screen for completely disconnected use.</p>
+</strong> While cloud-based tools silently upload your photos to remote servers for processing, our entire degradation engine runs inside your browser using the HTML5 Canvas API, FileReader, and toBlob— all standard browser APIs that execute locally. Watch your browser's Network tab while an image is processed: no request carries your file. The whole pipeline runs after the page is on screen, so with your connection switched off afterwards, uploading, previewing, preset effects, advanced controls, downloading and batch processing all still work. This architecture makes our tool the safest choice for sensitive content: passport photos, ID card scans, medical document screenshots, private family photos, and confidential work materials. No servers means no data breaches, no subpoenable records, and no privacy policy that changes tomorrow. </p>
         
 </div>
         
@@ -262,7 +262,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <p class="text-xs text-zinc-600 leading-relaxed">
 <strong class="text-zinc-600">Eight independent dimensions of degradation
-</strong> that no other free tool combines on a single page. The quality slider (1–100%) controls JPEG compression aggressiveness at the output encoding stage. The pixelation control (1×–20×) downsamples and re-upscales your image with nearest-neighbor interpolation for blocky retro grids. The noise generator (0–100%) adds per-pixel random perturbation to every RGB channel independently. The blur control (0–20) progressively downsamples the image before re-upsampling, simulating optical softness and VHS tape degradation. The brightness adjustment (−50 to +50) shifts luminance before JPEG encoding. Five one-click presets apply carefully tuned combinations: Light Fry (30% quality), Classic Deep Fried (20% quality + 2× pixelation + 15% noise + slight brightness boost), Nuked (10% quality + 8× pixelation + 35% noise + extreme brightness + yellow overlay), 2003 Phone (20% quality + 6× pixelation + 20% noise + cool blue tint), and CRT Monitor (40% quality + scan lines every 3px + dimming overlay + subtle noise). The Advanced Controls panel then lets you deviate from any preset and dial in your exact aesthetic— from subtle film grain to unrecognizable visual destruction.</p>
+</strong> that rarely appear together on one free page. The quality slider (1–100%) controls JPEG compression aggressiveness at the output encoding stage. The pixelation control (1×–20×) downsamples and re-upscales your image with nearest-neighbor interpolation for blocky retro grids. The noise generator (0–100%) adds per-pixel random perturbation to every RGB channel independently. The blur control (0–20) progressively downsamples the image before re-upsampling, simulating optical softness and VHS tape degradation. The brightness adjustment (−50 to +50) shifts luminance before JPEG encoding. Five one-click presets apply carefully tuned combinations: Light Fry (30% quality), Classic Deep Fried (20% quality + 2× pixelation + 15% noise + slight brightness boost), Nuked (10% quality + 8× pixelation + 35% noise + extreme brightness + yellow overlay), 2003 Phone (20% quality + 6× pixelation + 20% noise + cool blue tint), and CRT Monitor (40% quality + scan lines every 3px + dimming overlay + subtle noise). The Advanced Controls panel then lets you deviate from any preset and dial in your exact aesthetic— from subtle film grain to unrecognizable visual destruction.</p>
         
 </div>
         
@@ -322,15 +322,13 @@ const description = 'Make images low quality instantly in your browser. Deep fry
             
 <h3 class="text-lg font-semibold text-zinc-900 mb-2">Deep Fried Memes</h3>
             
-<p class="text-sm text-zinc-600 leading-relaxed max-w-md">Create crispy, artifact-ridden memes for Reddit's r/DeepFriedMemes (500,000+ members), Discord meme channels, Twitter, and Instagram. The deep fried aesthetic originated on Tumblr around 2014—users discovered that repeatedly screenshotting, re-uploading, and compressing an image created a uniquely grotesque visual language. Our tool replicates that entire degradation pipeline in a single click. 
-<strong class="text-zinc-700">The Nuked preset
-</strong> delivers the authentic “screenshotted 40 times” look with 8× pixelation, 35% noise, extreme brightness (+20), and aggressive JPEG compression at 10% quality—this is the setting used by r/DeepFriedMemes power users. 
+<p class="text-sm text-zinc-600 leading-relaxed max-w-md">Create crispy, artifact-ridden memes for Reddit, Discord, and anywhere else the format still lands. The look comes from a chain of losses: an image is screenshotted, re-saved, re-uploaded and re-encoded until the JPEG blocks pile up. Our tool reproduces that pipeline in one click instead of forty saves. The Nuked preset pushes every control at once - 8x pixelation, 35% noise, brightness +20 and JPEG quality at 10% -  
 <strong class="text-zinc-700">The Classic Deep Fried preset
 </strong> gives you the standard Reddit aesthetic with 2× pixelation, 15% noise, and moderate compression at 20% quality. For subtle meme seasoning where the original image is still recognizable, start with 
 <strong class="text-zinc-700">Light Fry at 30% quality
 </strong>. 
 <strong class="text-zinc-700">Pro tip:
-</strong> combine the Nuked preset with the CRT Monitor preset afterward for a truly cursed result, or layer the 2003 Phone preset on top of Classic for a nostalgic deep fried look. The output format defaults to JPEG because JPEG's lossy compression algorithm creates the characteristic 8×8 blocking artifacts that define the deep fried aesthetic—PNG's lossless compression would defeat the purpose.</p>
+</strong> combine the Nuked preset with the CRT Monitor preset afterward for a truly cursed result, or layer the 2003 Phone preset on top of Classic for a nostalgic deep fried look. The output format defaults to JPEG because JPEG's lossy compression algorithm creates the characteristic 8×8 blocking artifacts that define the deep fried aesthetic—PNG's lossless compression would defeat the purpose. The <a href="/deep-fry-image/" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">deep fry page</a> loads the same engine with Classic preselected and prints the exact value each preset writes into the sliders.</p>
             
 <p class="text-xs text-zinc-600 mt-2 font-mono">Target: 30&ndash;100KB &middot; JPEG recommended</p>
           
@@ -350,15 +348,15 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <h3 class="text-base font-semibold text-zinc-900 mb-2">Discord & Forum Limits</h3>
           
-<p class="text-sm text-zinc-600 leading-relaxed">Bypass Discord's 8MB free-tier upload cap, forum attachment restrictions, and messaging app file size limits without shrinking your image dimensions. 
+<p class="text-sm text-zinc-600 leading-relaxed">Chat apps, forums and file-sharing bots all put a ceiling on the attachment you can send, and the ceiling is usually lower than the photo your phone or camera just produced. 
 <strong class="text-zinc-700">How it works:
-</strong> open Advanced Controls, type your target KB in the Target File Size field, and hit Auto-Match. The tool runs a 9-iteration binary search across all 100 quality levels to find the optimal JPEG compression setting that keeps you under the limit while preserving the best possible visual quality. This is fundamentally different from resizing—your image keeps its full pixel dimensions and looks the same size on screen, but the file size drops dramatically. 
-<strong class="text-zinc-700">Common platform limits at a glance:
-</strong> Discord free tier: 8MB (Nitro Basic: 50MB, Nitro: 500MB). Slack: 10MB per file. Telegram: 2GB (but compresses photos automatically). WhatsApp: 16MB for media. Most online forums: 500KB–2MB per attachment. Reddit: 20MB for direct image uploads. Twitter/X: 5MB for photos. 
-<strong class="text-zinc-700">Real example:
-</strong> a 12MB DSLR photo of your gaming setup gets rejected by Discord's free tier. Upload it here, enter 7000 (7MB to leave headroom) in Target File Size, click Auto-Match, and the tool finds quality ~55%—keeping your photo at full 4000×3000 resolution while fitting comfortably under Discord's limit. No watermark, no registration, and the processed image never left your browser.</p>
+</strong> open Advanced Controls, type your target KB in the Target File Size field, and hit Auto-Match. The tool runs a 9-iteration binary search across the 100 quality levels to find the best JPEG compression setting that keeps you under the limit while preserving the most visual quality. This is fundamentally different from resizing—your image keeps its full pixel dimensions and looks the same size on screen, but the file size drops dramatically. 
+<strong class="text-zinc-700">Read the limit off your own upload screen:
+</strong> platforms revise these caps often and they differ by account tier, so the number the composer or form shows you is the only one worth trusting. Leave a little headroom rather than aiming at the exact ceiling. 
+<strong class="text-zinc-700">Worked example:
+</strong> a 12MB DSLR photo that a chat app refuses. Enter 7000 in Target File Size, click Auto-Match, and the tool settles on a quality around the mid-50s—keeping the photo at its full 4000×3000 dimensions while fitting inside a single-digit-megabyte cap.</p>
           
-<p class="text-xs text-zinc-600 mt-3 font-mono">Target: under 100KB</p>
+<p class="text-xs text-zinc-600 mt-3 font-mono">Target: whatever cap your upload screen states</p>
         
 </div>
         
@@ -368,13 +366,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <h3 class="text-base font-semibold text-zinc-900 mb-2">Government & Exam Portals</h3>
           
-<p class="text-sm text-zinc-600 leading-relaxed">Passport applications, visa photos, UPSC, SSC, IBPS, banking exams, driving license renewals, and other government portal uploads often impose 
-<strong class="text-zinc-700">strict dual requirements: specific pixel dimensions AND a maximum file size of 20–50KB
-</strong>. These two constraints are naturally in tension—keeping a photo at 300×400 pixels while squeezing it under 50KB requires aggressive JPEG compression without any resizing. 
-<strong class="text-zinc-700">The Target File Size Auto-Match mode was built exactly for this scenario.
-</strong> Here is the workflow: keep your photo at the exact pixel dimensions required by the form (do not resize), upload it, type your KB limit in the Target File Size field (e.g., 50 for a 50KB cap), and click Auto-Match. The tool performs a binary search across 9 quality levels—testing 50%, 25%, 12%, 6%, 3%, and so on—to find the highest quality setting that produces a file under your target. This is vastly superior to the trial-and-error approach of manually adjusting a slider, saving a file, checking its size, and repeating. 
-<strong class="text-zinc-700">Common exam photo requirements:
-</strong> UPSC Civil Services: 20–50KB, 3.5cm×4.5cm at 350×450px. SSC CGL: 20–50KB. IBPS: 20–50KB. NEET: 10–200KB. US passport: under 240KB at 600×600px. Indian passport: 10–20KB at 200×300px. UK passport: under 6MB. All processing runs locally in your browser, so sensitive ID documents and passport photos never touch a remote server—critical for identity documents governed by data protection laws. Output in JPEG format for maximum compression; if your form requires PNG, switch the format selector in Advanced Controls, though note that PNG files will be larger at the same visual quality.</p>
+<p class="text-sm text-zinc-600 leading-relaxed">Passport offices, visa portals, exam bodies and licence services frequently impose <strong class="text-zinc-700">two requirements at once: fixed pixel dimensions and a small maximum file size, often in the tens of KB. </strong>Those two constraints are naturally in tension—keeping a photo at 300×400 pixels while squeezing it under 50KB needs aggressive JPEG compression with no resizing at all. <strong class="text-zinc-700">Target File Size Auto-Match was built for exactly this. </strong>Here is the workflow: crop the photo to the dimensions the form asks for, upload it, type the KB limit into the Target File Size field (50 for a 50KB cap), and click Auto-Match. The tool runs a 9-iteration binary search across quality levels 1 to 100 and reports the highest setting that lands under your target, which beats nudging a slider, saving, checking the size and repeating. <strong class="text-zinc-700">Read the current numbers off your own form. </strong>These specifications are revised regularly and differ by category and country, so the page that will reject your file is the only source worth trusting. All processing runs locally in your browser, so identity photos never touch a remote server—worth having when the image is of your own face and documents. Output as JPEG for the smallest file; if the form demands PNG, switch the format selector in Advanced Controls, understanding a PNG will be larger than a JPEG at the same visual quality.</p>
           
 <p class="text-xs text-zinc-600 mt-3 font-mono">Target: under 50KB</p>
         
@@ -477,9 +469,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-3">Deep Fried 
 <span class="text-brand-700">Meme</span> Guide</h2>
           
-<p class="text-sm text-zinc-600 leading-relaxed">The deep fried meme is internet culture’s most recognizable visual language. Originating on Tumblr around 2014 and exploding on Reddits <a href="https://www.reddit.com/r/DeepFriedMemes/" rel="nofollow noopener" target="_blank" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">r/DeepFriedMemes</a> (500K+ members), the aesthetic relies on 
-<strong class="text-zinc-700">extreme JPEG compression artifacts, pixelation, oversaturation, and noise
-</strong> layered together to create an image that looks like it has been screenshotted, re-uploaded, and compressed dozens of times. Our tool replicates this process in a single click with three distinct frying levels, each tuned for a different stage of crustiness.</p>
+<p class="text-sm text-zinc-600 leading-relaxed">The deep fried meme is one of the most recognizable visual languages online. It imitates a chain of losses: an image is screenshotted, re-saved, re-uploaded and re-encoded until the artifacts pile up into something that looks ruined on purpose. What defines the look is <strong class="text-zinc-700">extreme JPEG compression artifacts, pixelation, blown-out highlights and noise</strong> layered together. This tool reproduces that whole chain in one click, at three frying levels tuned for different amounts of damage - see the <a href="/deep-fry-image/" class="text-brand-700 hover:text-brand-800 underline underline-offset-2">deep fry page</a> for the exact values each preset writes into the sliders.</p>
 
 <blockquote class="mt-5 border-l-4 border-brand-500 bg-brand-50/60 rounded-r-xl px-5 py-4">
   <p class="text-sm text-zinc-800 italic">&ldquo;JPEG is a commonly used method of lossy compression for digital images&rdquo;&mdash;the mechanism every deep fried meme abuses.</p>
@@ -571,9 +561,8 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 </div>
 <div class="text-sm font-semibold text-zinc-800 mb-1">Discord
 </div>
-<div class="text-brand-700 font-mono text-xs mb-1.5">8 MB (free) / 50 MB (Nitro)
-</div>
-<p class="text-xs text-zinc-600 leading-relaxed">Discord’s free tier rejects uploads over 8MB with a silent failure—your image just does not appear. Our tool crushes high-res screenshots and photos under the limit while keeping full pixel dimensions. A 12MB gaming screenshot compressed at quality 55–65% typically lands around 6–7MB, giving you a comfortable margin. For Nitro Basic (50MB) or Nitro (500MB), use the Auto-Match feature with your exact target. The key advantage over resizing: your image fills the same space in chat but the file fits. Also works for Discord profile banners (6MB limit) and server icons.</p>
+<div class="text-brand-700 font-mono text-xs mb-1.5">cap shown on the composer</div>
+<div class="text-xs text-zinc-600 leading-relaxed">Chat apps reject an attachment the moment it passes their cap, and the cap depends on your account tier. Our tool shrinks the file without touching the pixel dimensions, so the image still fills the same space in chat. A 12MB gaming screenshot at quality 55-65% typically lands in the 6-7MB band, which leaves headroom under a single-digit-megabyte limit. Take the number from the upload screen in front of you rather than from any list: these caps move. Auto-Match handles the search either way.</p>
 </div>
           
 <div class="card-flat p-4">
@@ -581,9 +570,8 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 </div>
 <div class="text-sm font-semibold text-zinc-800 mb-1">Government &amp; Exam Forms
 </div>
-<div class="text-brand-700 font-mono text-xs mb-1.5">20–50 KB photos
-</div>
-<p class="text-xs text-zinc-600 leading-relaxed">Passport applications, visa photos, and exam portals (UPSC, SSC, IBPS, NEET, banking) enforce dual constraints: specific pixel dimensions AND a max file size of 20–50KB. Resizing tools break the pixel requirement; our tool keeps exact dimensions and only adjusts JPEG quality. Auto-Match enters a target like 50, runs 9 binary search iterations, and finds the optimal quality—often around 15–25%—that stays under the limit. For Indian passport photos (200×300px, 10–20KB), US passports (600×600px, under 240KB), and UK visas (900×1200px, under 6MB), the workflow is identical: upload, enter target KB, click Auto-Match, download. All processing is local, so sensitive ID photos never touch a server.</p>
+<div class="text-brand-700 font-mono text-xs mb-1.5">dimensions + a KB cap</div>
+<div class="text-xs text-zinc-600 leading-relaxed">Passport, visa and exam upload forms commonly enforce two constraints together: an exact pixel size and a maximum file weight that is small by modern standards. Compressors that resize break the first requirement, so the answer is heavier JPEG encoding at the original dimensions. Enter the cap your form states in Target File Size and Auto-Match runs nine binary search iterations to find the best quality under it. Read the current figures off your own form: they are revised often and vary by category and country.</p> All processing is local, so sensitive ID photos never touch a server.</p>
 </div>
           
 <div class="card-flat p-4">
@@ -591,9 +579,8 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 </div>
 <div class="text-sm font-semibold text-zinc-800 mb-1">Email Attachments
 </div>
-<div class="text-brand-700 font-mono text-xs mb-1.5">25 MB limit (Gmail/Outlook)
-</div>
-<p class="text-xs text-zinc-600 leading-relaxed">Gmail and Outlook both cap attachments at 25MB per email, and a single high-res DSLR photo (20–30MB) already exceeds that. Rather than creating a ZIP archive or uploading to a cloud drive and sharing a link, compress the photo directly: upload here, enter 20000 (20MB for multi-photo emails) in Target File Size, and Auto-Match finds the highest quality under your ceiling. The photo keeps its full 4000×3000 resolution—it just uses heavier JPEG compression. For sending 3–5 photos in one email, target 4–5MB each and they will all fit. Yahoo Mail (25MB), ProtonMail (25MB free), and iCloud Mail (20MB) have similar limits. For truly massive batches, use the batch processing feature to compress a whole folder at once with identical settings.</p>
+<div class="text-brand-700 font-mono text-xs mb-1.5">per-message attachment cap</div>
+<div class="text-xs text-zinc-600 leading-relaxed">Mail providers cap the total size of everything attached to one message, and a single high-resolution DSLR photo can eat that allowance on its own. Rather than zipping files or linking to a cloud drive, compress the photo itself: upload it, enter a KB target a little below the cap the composer shows, and Auto-Match finds the highest quality that fits. The photo keeps its full resolution and only trades it for heavier JPEG compression. Sending several pictures in one mail? Aim each file at roughly a quarter of the total so they all travel together. For whole folders, use the batch panel so every image gets the same settings.</p>
 </div>
         
 </div>
@@ -747,7 +734,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
             <tr class="border-b border-zinc-200/50 hover:bg-white/50 transition-colors">
               
 <td class="py-3 px-3">
-<span class="text-zinc-800 font-medium">Discord upload (under 8MB)</span><br>
+<span class="text-zinc-800 font-medium">Chat app upload (under the stated cap)</span><br>
 <span class="text-zinc-600 text-[10px]">Bypass free-tier upload cap</span>
 </td>
               
@@ -766,7 +753,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
               
 <td class="py-3 px-3">
 <span class="text-zinc-800 font-medium">Government form photo (under 50KB)</span><br>
-<span class="text-zinc-600 text-[10px]">Passport, visa, UPSC, SSC, IBPS</span>
+<span class="text-zinc-600 text-[10px]">Passport, visa and exam portal uploads</span>
 </td>
               
 <td class="py-3 px-3 hidden sm:table-cell font-mono text-zinc-600">—</td>
@@ -1321,7 +1308,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
 <strong class="text-zinc-700">100% yes, and here is why:
-</strong> All image processing runs entirely inside your web browser using the HTML5 Canvas API. Your files are never transmitted to any remote server. No data leaves your device at any point during upload, processing, or download. You can verify this yourself — open your browser’s Developer Tools Network tab while using the tool and you will see zero network requests during processing. You can even disconnect your internet connection entirely and the tool continues to work. We do not use cookies, analytics trackers, or any form of data collection. This makes the tool particularly suitable for sensitive documents like passport photos, ID cards, medical images, or any private photograph you would not want uploaded to a third-party server.</p>
+</strong> All image processing runs entirely inside your web browser using the HTML5 Canvas API. Your files are never transmitted to any remote server. No data leaves your device at any point during upload, processing, or download. Open your browser’s Developer Tools Network tab while an image is processed and you will see that no request carries your file. Processing happens after the page has loaded, so with the connection switched off once the page is on screen the tool still works. Site traffic analytics are anonymous and aggregate, documented on our privacy page — nothing about your images is collected or stored. This makes the tool particularly suitable for sensitive documents like passport photos, ID cards, medical images, or any private photograph you would not want uploaded to a third-party server.</p>
         
 </details>
         
@@ -1385,10 +1372,8 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 </summary>
           
 <p class="mt-3 text-sm text-zinc-600 leading-relaxed">You can reduce image quality down to 1%, often 
-<strong class="text-zinc-700">reducing file size by over 95%
-</strong>. For example, a typical 4MB smartphone photo becomes approximately 30–50KB at 5% quality while keeping the same pixel dimensions. At 1% quality, that same photo can shrink to under 10KB. For precise file size targeting, use the 
-<strong class="text-zinc-700">Target File Size Auto-Match
-</strong> feature in Advanced Controls: enter your desired KB (e.g., 50 for a government form photo requirement), and the tool performs a binary search across 9 quality levels to find the optimal setting that stays under your target while preserving the best possible visual quality. This is especially useful for Discord’s 8MB limit, email’s 25MB cap, and government portal requirements of 20–50KB.</p>
+<strong class="text-zinc-700">cutting the file size by a wide margin
+</strong>. How far a file can fall depends on the picture: flat graphics with sharp edges survive heavy compression far better than detailed photographs, so measure your own image rather than trusting a ratio. For a precise target, use the <strong class="text-zinc-700">Target File Size Auto-Match</strong> feature in Advanced Controls: enter the KB figure your form or chat app asks for, and the tool runs nine binary search iterations across quality levels 1 to 100 to find the highest setting that stays under it. That covers everything from a passport photo capped at a few tens of KB to a mail attachment capped in megabytes.</p>
         
 </details>
         
@@ -1445,9 +1430,9 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <p class="mt-3 text-sm text-zinc-600 leading-relaxed">Intentional image degradation serves several distinct purposes. 
 <strong class="text-zinc-700">Internet culture and humor:
-</strong> Deep fried memes use extreme JPEG compression, pixelation, and oversaturation as a form of irony and absurdist comedy. The aesthetic originated on Tumblr around 2014–2015 and grew into a major format on Reddit (r/DeepFriedMemes has over 500,000 members), Discord, and Twitter. 
+</strong> Deep fried memes use extreme JPEG compression, pixelation and blown-out colour as a form of irony and absurdist comedy; the joke is partly the quality itself. The look spread through meme communities on Reddit, Discord and Twitter, 
 <strong class="text-zinc-700">Practical file compression:
-</strong> Many platforms enforce strict file size limits — Discord’s free tier caps at 8MB, Gmail at 25MB, and government portals often require photos under 50KB. 
+</strong> Many platforms enforce strict file size limits, from chat apps that cap a free attachment to a few megabytes down to passport and exam forms that want a portrait under 50KB. 
 <strong class="text-zinc-700">Privacy and censorship:
 </strong> Pixelation is the standard method for obscuring faces, license plates, addresses, and other sensitive information in images shared publicly. 
 <strong class="text-zinc-700">Aesthetic and nostalgia:
@@ -1516,7 +1501,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 <strong class="text-zinc-700">Five one-click presets
 </strong> (Light Fry, Classic Deep Fried, Nuked, 2003 Phone, CRT Monitor) that apply carefully tuned combinations of multiple effects. 
 <strong class="text-zinc-700">Target File Size Auto-Match
-</strong> — type any KB target and the tool finds the optimal quality setting via binary search (no other free tool offers this). 
+</strong> — type any KB target and the tool finds the optimal quality setting via binary search (few free tools expose it). 
 <strong class="text-zinc-700">Four independent parameter sliders
 </strong> (pixelation, noise, blur, brightness) for precise creative control. 
 <strong class="text-zinc-700">Batch processing
@@ -1524,7 +1509,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 <strong class="text-zinc-700">100% client-side processing
 </strong> — verified privacy with zero network requests. 
 <strong class="text-zinc-700">100MB file limit
-</strong> (most competitors cap at 5–10MB). 
+</strong> (many browser tools cap uploads far lower). 
 <strong class="text-zinc-700">No watermarks
 </strong>, no registration, no usage limits, and completely free with no paid tier.</p>
         
@@ -1568,7 +1553,7 @@ const description = 'Make images low quality instantly in your browser. Deep fry
           
 <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
 <strong class="text-zinc-700">Up to 100MB per file
-</strong> with no practical limits on image dimensions. This is significantly larger than most competing tools, which typically cap at 5–10MB. A 100MB file at modern smartphone resolution (e.g., 12MP or 4000×3000) takes under 200ms to process on current hardware. There is 
+</strong> with no practical limits on image dimensions. Few free browser tools allow a file this large. A 100MB file at modern smartphone resolution (e.g., 12MP or 4000×3000) takes under 200ms to process on current hardware. There is 
 <strong class="text-zinc-700">no limit on the number of files
 </strong> you can process per session or per day — batch upload as many as you want. If you need to process files larger than 100MB, we recommend using desktop image editing software like GIMP or Photoshop for the initial resize, then returning here for the quality degradation pass.</p>
         
@@ -1612,7 +1597,23 @@ const description = 'Make images low quality instantly in your browser. Deep fry
 <strong class="text-zinc-700">Yes — with full animation preservation in the preview.
 </strong> When you upload an animated GIF, the tool uses gifuct-js to decompress every frame, then renders them sequentially in the preview panel with the current quality and effect settings applied to each frame in real time. You see the animated result with all effects (pixelation, noise, blur, brightness) applied while the GIF plays. 
 <strong class="text-zinc-700">Note on downloading:
-</strong> the current version outputs individual frames as JPEG for maximum compression. Full animated GIF export with all effects baked in is under development. For now, the preview accurately shows how each frame of your GIF will look with the degradation applied, and you can download any individual frame as a JPEG. This is the only free online image degradation tool that provides animated GIF preview with live effects applied — most either reject GIFs entirely or only process the first frame.</p>
+</strong> the current version outputs individual frames as JPEG for maximum compression. Full animated GIF export with all effects baked in is under development. For now, the preview accurately shows how each frame of your GIF will look with the degradation applied, and you can download any individual frame as a JPEG. GIF preview with the effects applied live is not something every degradation tool offers; some reject animated files outright or only render the first frame.</p>
+        
+</details>
+        
+<details class="group py-4">
+          
+<summary class="flex justify-between items-center cursor-pointer list-none">
+            
+<span class="text-base font-medium text-zinc-900 pr-4">Does the tool add watermarks?</span>
+            
+<svg class="w-4 h-4 text-zinc-600 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+</svg>
+          
+</summary>
+          
+<p class="mt-3 text-sm text-zinc-600 leading-relaxed">No. The exported file is the pixels you see in the preview: the engine draws your image, applies the filters and encodes the result, and nothing else is painted on top. There is no logo layer, no stamp and no extra metadata in the download.
+</p>
         
 </details>
         
@@ -1969,10 +1970,10 @@ const description = 'Make images low quality instantly in your browser. Deep fry
       <h2 class="text-lg font-semibold text-zinc-900 mb-3">Privacy &amp; Trust</h2>
       <p class="text-xs text-zinc-600 leading-relaxed">
         All image processing runs in your browser via the Canvas API. <strong class="text-zinc-700">No files are ever uploaded to any server.</strong>
-        We do not use cookies, analytics, or any form of data collection. You can disconnect your internet and the tool still works.
+        Nothing about your images is collected or stored. You can disconnect your internet once the page is loaded and the tool still works.
         No watermarks, no registration, no limits. <strong class="text-zinc-700">100% free, 100% private, forever.</strong>
       </p>
-      <p class="text-[10px] text-zinc-600 mt-3 font-mono">Client-side processing &middot; No data collection &middot; No cookies &middot; No server uploads</p>
+      <p class="text-[10px] text-zinc-600 mt-3 font-mono">Client-side processing &middot; No server uploads &middot; No sign-up &middot; No watermarks</p>
     </div>
   </section>
 
@@ -1982,23 +1983,24 @@ const description = 'Make images low quality instantly in your browser. Deep fry
     '@type': 'FAQPage',
     'mainEntity': [
       {'@type': 'Question', 'name': 'How do I make an image lower quality online?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Drag and drop any image into the upload zone. Use the quality slider to set your desired degradation level. Optionally click a preset like Nuked or CRT Monitor. Open Advanced Controls for fine-grained adjustments to pixelation, noise, blur, and brightness. Click Download when satisfied. All processing runs in your browser.'}},
-      {'@type': 'Question', 'name': 'Is this tool safe and private?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. All image processing runs entirely inside your browser using the HTML5 Canvas API. Your files are never transmitted to any remote server. You can verify this by opening your browser Developer Tools Network tab. You can even disconnect your internet and the tool continues to work. We do not use cookies, analytics, or any data collection.'}},
+      {'@type': 'Question', 'name': 'Is this tool safe and private?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. All image processing runs entirely inside your browser using the HTML5 Canvas API. Your files are never transmitted to any remote server. You can verify this by opening your browser Developer Tools Network tab: no request carries your image. Processing runs after the page has loaded, so it continues to work with your internet switched off. Nothing about your images is collected or stored; site traffic analytics are anonymous and aggregate.'}},
       {'@type': 'Question', 'name': 'What image formats are supported?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Input formats: JPEG, PNG, WebP, GIF, and BMP up to 100MB per file. Output formats: JPEG (best for deep fried effects and compression), PNG (lossless, preserves transparency), or WebP (modern balance of quality and size).'}},
       {'@type': 'Question', 'name': 'Can I make deep fried memes with this?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. The Nuked preset applies 8x pixelation, 35% noise, over-brightening, and 10% JPEG quality for the maximum deep fried look. Classic Deep Fried uses 2x pixelation and 15% noise at 20% quality. Each preset updates the Advanced Controls sliders so you can tweak further.'}},
-      {'@type': 'Question', 'name': 'How much can I reduce the file size?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'You can reduce image quality down to 1%, often reducing file size by over 95% while keeping the same pixel dimensions. For precise targeting, use Target File Size Auto-Match which runs a 9-iteration binary search to find the optimal quality setting under your KB target.'}},
+      {'@type': 'Question', 'name': 'How much can I reduce the file size?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'You can reduce image quality down to 1%, cutting the file size by a wide margin while keeping the same pixel dimensions. For precise targeting, use Target File Size Auto-Match which runs a 9-iteration binary search to find the optimal quality setting under your KB target.'}},
       {'@type': 'Question', 'name': 'Does it work on iPhone and Android?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Fully responsive and works in all modern mobile browsers including Safari on iOS and Chrome on Android. No app download required. All processing happens on-device using your phone GPU-accelerated browser engine.'}},
       {'@type': 'Question', 'name': 'Is this really free?', 'acceptedAnswer': {'@type': 'Answer', 'text': '100% free with no strings attached. No daily usage limits, no watermarks, no forced registration, and no premium tier. Process as many images as you want, every day, forever. The tool operates entirely in your browser which means minimal hosting costs.'}},
       {'@type': 'Question', 'name': 'Why do people intentionally make images low quality?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'It serves several purposes: deep fried memes for internet culture and humor on Reddit and Discord, practical file compression for platform limits, privacy and censorship via pixelation, and aesthetic nostalgia with CRT scan lines and VHS effects.'}},
-      {'@type': 'Question', 'name': 'What is the difference between reducing quality and reducing resolution?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Resolution reduction shrinks pixel dimensions making the image physically smaller. Quality reduction keeps the exact same width and height in pixels while applying heavier JPEG compression. Your image fills the same space but looks softer and more artifacted.'}},
+      {'@type': 'Question', 'name': "What's the difference between reducing quality and reducing resolution?", 'acceptedAnswer': {'@type': 'Answer', 'text': 'Resolution reduction shrinks pixel dimensions making the image physically smaller. Quality reduction keeps the exact same width and height in pixels while applying heavier JPEG compression. Your image fills the same space but looks softer and more artifacted.'}},
       {'@type': 'Question', 'name': 'Does the tool add watermarks?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'No. Downloaded images contain no watermarks, branding, or hidden metadata. You get exactly the degraded image you see in the preview with no modifications.'}},
       {'@type': 'Question', 'name': 'Why keep original dimensions but make it look worse?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Most compressors shrink the pixel dimensions of your image. Our tool keeps the exact same width and height while applying heavier JPEG compression, so the image fills the same space on screen but looks softer and more artifacted. This is the right approach for deep fried memes and government form photos.'}},
-      {'@type': 'Question', 'name': 'How does this compare to other tools?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Most online low quality tools offer only a single quality slider. This tool adds five one-click presets, Target File Size Auto-Match via binary search, four independent parameter sliders, batch processing, 100% client-side processing, 100MB file limit, and no watermarks or registration.'}},
+      {'@type': 'Question', 'name': 'How does this compare to other tools?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Most online low quality tools offer only a single quality slider. This tool adds five one-click presets, Target File Size Auto-Match via binary search, four independent parameter sliders, batch processing, 100% client-side processing, a 100MB file limit, and no watermarks or registration.'}},
       {'@type': 'Question', 'name': 'Can I process multiple images at once?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Select multiple files or drag a group onto the upload zone. All images are processed with the same settings, and a Batch Results panel shows thumbnail cards with individual size stats and download buttons. There is no limit on how many images you can process.'}},
-      {'@type': 'Question', 'name': 'What is the maximum file size I can upload?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Up to 100MB per file with no practical limit on image dimensions. This is significantly larger than most competing tools which typically cap at 5-10MB. There is no limit on the number of files you can process.'}},
+      {'@type': 'Question', 'name': 'What is the maximum file size I can upload?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Up to 100MB per file with no practical limit on image dimensions. Few free browser tools allow a file this large. There is no limit on the number of files you can process.'}},
       {'@type': 'Question', 'name': 'Can I use this tool offline?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Because 100% of the processing runs in your browser, you can load the page once, disconnect from the internet, and continue using every feature. The tool is built as static HTML, CSS, and JavaScript with zero server dependencies.'}},
       {'@type': 'Question', 'name': 'Does the tool support animated GIFs?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes, with full animation preservation in the preview. Animated GIF frames are decompressed and rendered with the current effects applied in real time. The current version outputs individual frames as JPEG; full animated GIF export is under development.'}},
       {'@type': 'Question', 'name': 'How does the Target File Size Auto-Match work?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'It runs a 9-iteration binary search across quality levels 1-100 to find the highest quality setting that produces a file under your target KB. Auto-Match only adjusts the quality slider; it does not change your pixelation, noise, blur, or brightness settings.'}},
-      {'@type': 'Question', 'name': 'Is there a way to undo or reset my changes?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. The Reset button clears the current image and resets all parameters to defaults: quality 15%, pixelation 1x, noise 0%, blur 0, brightness 0, and JPEG output. It performs a full clean-slate reset rather than incremental undo.'}},
+      {'@type': 'Question', 'name': 'Is there a way to undo or reset my changes?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. The Reset button clears the current image and resets all parameters to defaults: quality 15%, pixelation 1x, noise 0%, blur 0, brightness 0, and JPEG output. It performs a full clean-slate reset rather than incremental undo.'}}, 
+      {'@type': 'Question', 'name': 'What output formats can I download?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Three, chosen in Advanced Controls: JPEG (default, and the one that paints the blocky artifacts), PNG (lossless, so the quality slider has no effect and pixel blocks stay crisp), and WebP (smaller than JPEG at similar quality, with softer artifacts).'}},
     ]
   })} />
 
@@ -2017,7 +2019,8 @@ const description = 'Make images low quality instantly in your browser. Deep fry
         
 <a href="#tool-root" class="hover:text-zinc-600 transition-colors">Try the Tool</a>
       
-<a href="/about/" class="hover:text-zinc-600 transition-colors">About</a>
+<a href="/deep-fry-image/" class="hover:text-zinc-900 transition-colors">Deep Fry</a>
+        <a href="/about/" class="hover:text-zinc-600 transition-colors">About</a>
         
 <a href="mailto:hello@low-quality-image-maker.com" class="hover:text-zinc-600 transition-colors">Contact</a>
         

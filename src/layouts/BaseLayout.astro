@@ -6,6 +6,8 @@ const {
   description = 'Make images low quality instantly in your browser. Deep fry memes, compress for Discord or government forms, add retro CRT effects. Free, private, no upload.',
 } = Astro.props;
 
+const isHome = Astro.url.pathname === '/';
+
 // Strip trailing slash for trailingSlash: 'never' — new URL('/') returns '/' which becomes 'example.com/'
 const pageUrl = Astro.url.pathname === '/'
   ? new URL('/', Astro.site).href.replace(/\/$/, '')
@@ -41,7 +43,7 @@ const pageUrl = Astro.url.pathname === '/'
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={pageUrl} />
-  <link rel="preload" as="image" imageSizes="(min-width: 768px) 66vw, 100vw" imagesrcset="/img/hero-before-400.webp 400w, /img/hero-before.webp 800w" fetchpriority="high" />
+  {isHome && <link rel="preload" as="image" imageSizes="(min-width: 768px) 66vw, 100vw" imagesrcset="/img/hero-before-400.webp 400w, /img/hero-before.webp 800w" fetchpriority="high" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
@@ -67,8 +69,8 @@ const pageUrl = Astro.url.pathname === '/'
   <!-- gifuct-js for GIF frame parsing (vendored locally for zero external requests) -->
   <script is:inline src="/vendor/gifuct-js.umd.js" defer></script>
 
-  <!-- Schema: WebApplication + Organization -->
-  <script type="application/ld+json" set:html={JSON.stringify({
+  <!-- Schema: WebApplication + Organization (homepage only — the graph describes this site's tool, not legal pages) -->
+  {isHome && <script type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@graph': [
       {
@@ -121,7 +123,7 @@ const pageUrl = Astro.url.pathname === '/'
         sameAs: ['https://github.com/jiusong'],
       },
     ],
-  })} />
+  })} />}
 </head>
 <body class="min-h-dvh bg-surface text-zinc-800 font-sans antialiased">
   <slot />
